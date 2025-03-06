@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 interface Food {
+  id: number;
   img: string;
   title: string;
   name: string;
-  price: Int32Array;
+  price: number;
 }
 
 interface PizzaCardProps {
