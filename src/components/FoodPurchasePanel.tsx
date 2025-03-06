@@ -1,24 +1,48 @@
 import "../css/FoodPurchasePanel.css";
 import "../assets/cheezepizza.jpg";
-function FoodPurchasePanel() {
+import { useState } from "react";
+
+interface Food {
+  id: number;
+  img: string;
+  title: string;
+  name: string;
+  price: number;
+  description: string;
+}
+
+interface foodPurchasePanelProps {
+  food: Food;
+}
+
+function FoodPurchasePanel(Food: foodPurchasePanelProps) {
+  const [count, setCount] = useState(0);
   return (
     <div>
       <div className="product-card">
-        <div className="product-image"></div>
+        <div className="product-image">
+          <img src={Food.food.img} alt={Food.food.title} />
+        </div>
         <div className="product-details">
           <div className="product-info">
             <div className="product-info-label">Title</div>
-            <div className="product-info-value">Pizza</div>
+            <div className="product-info-value">{Food.food.title}</div>
 
             <div className="product-info-label">Description</div>
-            <div className="product-info-value">Extra cheese</div>
+            <div className="product-info-value">{Food.food.description}</div>
 
             <div className="product-info-label">Price</div>
-            <div className="product-info-value">1200.00</div>
+            <div className="product-info-value">{Food.food.price}</div>
 
             <div className="product-info-label">Quantity</div>
             <div className="quantity-selector">
-              <button className="quantity-button">+</button>
+              <button
+                className="btn1"
+                onClick={() => setCount((count) => count + 1)}
+              >
+                +
+              </button>
+              {count}
             </div>
           </div>
 

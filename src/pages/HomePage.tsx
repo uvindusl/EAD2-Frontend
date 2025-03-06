@@ -3,6 +3,9 @@ import NavBar from "../components/navBar";
 import PizzaCard from "../components/PizzaCard";
 //import axios from "axios";
 import styled from "styled-components";
+import Footer from "../components/Footer";
+import SearchBar from "../components/SearchBar";
+import "../css/HomePage.css";
 
 // Define the Food interface
 interface Food {
@@ -79,12 +82,15 @@ function HomePage() {
   return (
     <div className="home">
       <NavBar />
-      <StyledContainer>
-        <h1>Our Pizza Menu</h1>
+      <div className="home-container">
+        <h1 className="home-title">Our Pizza Menu</h1>
+        <div className="search-wrapper">
+          <SearchBar />
+        </div>
         {loading ? (
-          <p>Loading menu items...</p>
+          <p className="loading-message">Loading menu items...</p>
         ) : error ? (
-          <p className="error">{error}</p>
+          <p className="error-message">{error}</p>
         ) : (
           <div className="food-grid">
             {foods.map((food) => (
@@ -92,7 +98,8 @@ function HomePage() {
             ))}
           </div>
         )}
-      </StyledContainer>
+      </div>
+      <Footer />
     </div>
   );
 }
