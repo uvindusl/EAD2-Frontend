@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/navBar";
 import PizzaCard from "../components/PizzaCard";
-import axios from "axios";
+//import axios from "axios";
 import styled from "styled-components";
 
 // Define the Food interface
