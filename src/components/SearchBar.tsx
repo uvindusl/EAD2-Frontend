@@ -1,85 +1,104 @@
-import React from "react";
 import styled from "styled-components";
 
 const SearchBar = () => {
   return (
     <StyledWrapper>
-      <div className="input-container">
+      <div className="ui-input-container">
         <input
-          className="input"
-          name="text"
+          required
+          placeholder="Search World Best Pizza"
+          className="ui-input"
           type="text"
-          placeholder="Search the World Best Pizaa..."
         />
+        <div className="ui-input-underline" />
+        <div className="ui-input-highlight" />
+        <div className="ui-input-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinejoin="round"
+              strokeLinecap="round"
+              strokeWidth={2}
+              stroke="currentColor"
+              d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+            />
+          </svg>
+        </div>
       </div>
     </StyledWrapper>
   );
 };
 
 const StyledWrapper = styled.div`
-  .input-container {
+  .ui-input-container {
     position: relative;
-    width: 100%;
-    max-width: 270px;
+    width: 400px; /* Increased width from 300px to 400px */
   }
 
-  .input {
+  .ui-input {
     width: 100%;
-    height: 60px;
-    padding: 12px;
-    font-size: 18px;
-    font-family: "Arial", sans-serif; /* Changed font from Courier New to Arial */
-    color: #ff6b00;
-    background-color: #fff;
-    border: 4px solid #ff6b00;
-    border-radius: 0;
+    padding: 10px 10px 10px 40px;
+    font-size: 1em;
+    border: none;
+    border-bottom: 2px solid #ccc;
     outline: none;
-    transition: all 0.3s ease;
-    box-shadow: 8px 8px 0 #ff6b00;
+    background-color: transparent;
+    transition: border-color 0.3s;
+    color: #000000; /* Changed typing text color to black */
   }
 
-  .input::placeholder {
-    color: #ffa866;
+  .ui-input:focus {
+    border-color: #ff6b00;
   }
 
-  .input:hover {
-    transform: translate(-4px, -4px);
-    box-shadow: 12px 12px 0 #ff6b00;
-  }
-
-  .input:focus {
-    background-color: #ff6b00;
-    color: #fff;
-    border-color: #ffc299;
-  }
-
-  .input:focus::placeholder {
-    color: #fff;
-  }
-
-  .input-container::after {
-    content: "|";
+  .ui-input-underline {
     position: absolute;
-    right: 10px;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #ff6b00;
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+
+  .ui-input:focus + .ui-input-underline {
+    transform: scaleX(1);
+  }
+
+  .ui-input-highlight {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: rgba(255, 107, 0, 0.1);
+    transition: width 0.3s;
+  }
+
+  .ui-input:focus ~ .ui-input-highlight {
+    width: 100%;
+  }
+
+  .ui-input-icon {
+    position: absolute;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
+    color: rgb(0, 0, 0);
+    transition: color 0.3s;
+  }
+
+  .ui-input:focus ~ .ui-input-icon {
     color: #ff6b00;
-    animation: blink 0.7s step-end infinite;
   }
 
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
-  }
-
-  .input:focus + .input-container::after {
-    color: #fff;
-  }
-
-  .input:not(:placeholder-shown) {
-    font-weight: bold;
-    letter-spacing: 1px;
+  .ui-input-icon svg {
+    width: 20px;
+    height: 20px;
   }
 `;
 
