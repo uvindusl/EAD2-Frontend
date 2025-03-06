@@ -1,19 +1,31 @@
 footer {
   background-color: #ff8c00 !important;
+  padding: 20px;
 }
 .main-container {
   display: flex;
   justify-content: space-between;
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-bottom: 40px;
 }
 
 .garpic {
-  width: 200px;
+  width: 250px;
 }
 
 div {
   text-align: center;
 }
 
+h4 {
+  font-size: 30px;
+}
 .custom-a {
   color: #000000;
+  font-size: 20px;
+}
+
+p {
+  font-size: 20px;
 }

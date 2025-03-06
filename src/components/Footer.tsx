@@ -35,6 +35,10 @@ function Footer() {
             <a className="custom-a" href="#">
               Facebook
             </a>
+            <br></br>
+            <a className="custom-a" href="#">
+              Twitter
+            </a>
           </div>
         </div>
       </div>
