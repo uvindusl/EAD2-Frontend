@@ -3,6 +3,7 @@ import NavBar from "../components/navBar";
 import PizzaCard from "../components/PizzaCard";
 //import axios from "axios";
 import styled from "styled-components";
+import Footer from "../components/Footer";
 
 // Define the Food interface
 interface Food {
@@ -93,6 +94,7 @@ function HomePage() {
           </div>
         )}
       </StyledContainer>
+      <Footer />
     </div>
   );
 }
