@@ -4,6 +4,7 @@ import PizzaCard from "../components/PizzaCard";
 //import axios from "axios";
 import styled from "styled-components";
 import Footer from "../components/Footer";
+import SearchBar from "../components/SearchBar";
 
 // Define the Food interface
 interface Food {
@@ -82,6 +83,7 @@ function HomePage() {
       <NavBar />
       <StyledContainer>
         <h1>Our Pizza Menu</h1>
+        <SearchBar />
         {loading ? (
           <p>Loading menu items...</p>
         ) : error ? (
