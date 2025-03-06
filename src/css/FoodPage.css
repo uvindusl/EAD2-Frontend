@@ -1,3 +1,45 @@
+/* FoodPage.css */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Search bar container styling */
+.search-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+/* Style for the search input itself */
+.search-bar {
+  width: 100%;
+  max-width: 600px;
+  padding: 12px 20px;
+  border: 2px solid #ff8c00;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+  box-shadow: 0 0 8px rgba(255, 140, 0, 0.4);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .search-bar {
+    max-width: 90%;
+  }
+}
+
 /* FoodPurchasePanel.css */
 .food-purchase-container {
   width: 100%;
