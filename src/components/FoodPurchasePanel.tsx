@@ -1,5 +1,6 @@
 import "../css/FoodPurchasePanel.css";
 import "../assets/cheezepizza.jpg";
+import { useState } from "react";
 
 interface Food {
   id: number;
@@ -15,6 +16,7 @@ interface foodPurchasePanelProps {
 }
 
 function FoodPurchasePanel(Food: foodPurchasePanelProps) {
+  const [count, setCount] = useState(0);
   return (
     <div>
       <div className="product-card">
@@ -34,7 +36,13 @@ function FoodPurchasePanel(Food: foodPurchasePanelProps) {
 
             <div className="product-info-label">Quantity</div>
             <div className="quantity-selector">
-              <button className="quantity-button">+</button>
+              <button
+                className="btn1"
+                onClick={() => setCount((count) => count + 1)}
+              >
+                +
+              </button>
+              {count}
             </div>
           </div>
 
