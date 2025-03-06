@@ -1,3 +1,19 @@
-p {
-  color: #ff0000;
+footer {
+  background-color: #ff8c00 !important;
+}
+.main-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.garpic {
+  width: 200px;
+}
+
+div {
+  text-align: center;
+}
+
+.custom-a {
+  color: #000000;
 }
