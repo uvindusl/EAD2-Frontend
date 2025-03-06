@@ -1,3 +1,6 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../css/navBar.css";
+
 function NavBar() {
   return (
     <>
@@ -27,7 +30,12 @@ function NavBar() {
             </li>
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="#">
-                Menu
+                Order
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link active" aria-current="page" href="#">
+                Cart
               </a>
             </li>
           </ul>
