@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import FoodPurchasePanel from "../components/FoodPurchasePanel";
 import NavBar from "../components/navBar";
 import "../css/FoodPage.css";
+import Footer from "../components/Footer";
 
 // Define the Food interface
 interface Food {
@@ -44,6 +45,7 @@ function FoodPage() {
           <p>Food not found</p>
         )}
       </div>
+      <Footer />
     </div>
   );
 }
