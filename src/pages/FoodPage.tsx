@@ -18,11 +18,6 @@ function FoodPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // In a real app, you would fetch this data from an API
-    // using the food ID from the URL params
-    // For example: axios.get(`/api/foods/${foodId}`)
-
-    // For now, we'll use sample data
     const sampleFood: Food = {
       id: 1,
       img: "/assets/cheezepizza.jpg",
