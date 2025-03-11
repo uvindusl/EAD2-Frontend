@@ -42,6 +42,12 @@ function FoodPurchasePanel(Food: foodPurchasePanelProps) {
               >
                 +
               </button>
+              <button
+                className="btn1"
+                onClick={() => setCount((count) => count - 1)}
+              >
+                -
+              </button>
               {count}
             </div>
           </div>
