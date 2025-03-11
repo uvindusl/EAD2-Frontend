@@ -4,12 +4,12 @@ import NavBar from "../components/navBar";
 import "../css/FoodPage.css";
 import Footer from "../components/Footer";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 // Define the Food interface
 interface Food {
   id: number;
-  img: string;
-  title: string;
+  picture: string; // Base64 string for the image
   name: string;
   price: number;
   description: string;
@@ -19,21 +19,36 @@ function FoodPage() {
   const { id } = useParams<{ id: string }>(); // Get the ID from the URL
   const [food, setFood] = useState<Food | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const sampleFood: Food = {
-      id: 1,
-      img: "/assets/cheezepizza.jpg",
-      title: "Cheese Pizza",
-      name: "Classic Cheese",
-      price: 9.99,
-      description:
-        "Delicious pizza topped with a blend of mozzarella, cheddar, and parmesan cheese.",
-    };
+    if (!id) {
+      setError("Invalid food ID");
+      setLoading(false);
+      return;
+    }
 
-    setFood(sampleFood);
-    setLoading(false);
-  }, []);
+    const apiUrl = `http://localhost:8080/food-micro/foods/${id}`;
+
+    setLoading(true);
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        if (response.status === 200) {
+          setFood(response.data);
+        } else if (response.status === 404) {
+          setFood(null); // Food not found
+        } else {
+          setError("Failed to load food details.");
+        }
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching food data:", error);
+        setError("Failed to load food details. Please try again later.");
+        setLoading(false);
+      });
+  }, [id]);
 
   return (
     <div>
@@ -41,6 +56,8 @@ function FoodPage() {
       <div className="container" style={{ marginTop: "2rem" }}>
         {loading ? (
           <p>Loading food details...</p>
+        ) : error ? (
+          <p>{error}</p>
         ) : food ? (
           <FoodPurchasePanel food={food} />
         ) : (

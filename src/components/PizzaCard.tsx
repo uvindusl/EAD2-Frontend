@@ -21,20 +21,21 @@ function PizzaCard({ food }: PizzaCardProps) {
   return (
     <StyledWrapper>
       <div className="card">
-        <div className="card-image">
-          <img
-            src={imageSource}
-            alt={food.name}
-            onError={(e) => {
-              e.currentTarget.src = "/placeholder.png";
-            }}
-          />
-          <Link to={`/food/${food.id}`}></Link>
-        </div>
-        <div className="heading">
-          {food.name}
-          <div className="author">${food.price}</div>
-        </div>
+        <Link to={`/food/${food.id}`}>
+          <div className="card-image">
+            <img
+              src={imageSource}
+              alt={food.name}
+              onError={(e) => {
+                e.currentTarget.src = "/placeholder.png";
+              }}
+            />
+          </div>
+          <div className="heading">
+            {food.name}
+            <div className="author">${food.price}</div>
+          </div>
+        </Link>
       </div>
     </StyledWrapper>
   );
@@ -48,11 +49,24 @@ const StyledWrapper = styled.div`
     border-radius: 6px;
   }
 
+  .card-image {
+    position: relative; // Needed for link to cover image
+  }
+
   .card-image img {
     width: 100%;
     height: 130px;
     border-radius: 6px 6px 0 0;
     object-fit: cover;
+  }
+
+  .card-image a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block; // Make link cover the image
   }
 
   .heading {

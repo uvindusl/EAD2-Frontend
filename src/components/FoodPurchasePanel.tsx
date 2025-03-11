@@ -1,38 +1,41 @@
 import "../css/FoodPurchasePanel.css";
-import "../assets/cheezepizza.jpg";
 import { useState } from "react";
 
 interface Food {
   id: number;
-  img: string;
-  title: string;
+  picture: string; // Base64 string for the image
   name: string;
   price: number;
   description: string;
 }
 
-interface foodPurchasePanelProps {
+interface FoodPurchasePanelProps {
   food: Food;
 }
 
-function FoodPurchasePanel(Food: foodPurchasePanelProps) {
+function FoodPurchasePanel({ food }: FoodPurchasePanelProps) {
   const [count, setCount] = useState(0);
+
+  const imageSource = food.picture
+    ? `data:image/jpeg;base64,${food.picture}`
+    : "/placeholder.png";
+
   return (
     <div>
       <div className="product-card">
         <div className="product-image">
-          <img src={Food.food.img} alt={Food.food.title} />
+          <img src={imageSource} alt={food.name} />
         </div>
         <div className="product-details">
           <div className="product-info">
-            <div className="product-info-label">Title</div>
-            <div className="product-info-value">{Food.food.title}</div>
+            <div className="product-info-label">Name</div>
+            <div className="product-info-value">{food.name}</div>
 
             <div className="product-info-label">Description</div>
-            <div className="product-info-value">{Food.food.description}</div>
+            <div className="product-info-value">{food.description}</div>
 
             <div className="product-info-label">Price</div>
-            <div className="product-info-value">{Food.food.price}</div>
+            <div className="product-info-value">{food.price}</div>
 
             <div className="product-info-label">Quantity</div>
             <div className="quantity-selector">
@@ -44,7 +47,7 @@ function FoodPurchasePanel(Food: foodPurchasePanelProps) {
               </button>
               <button
                 className="btn1"
-                onClick={() => setCount((count) => count - 1)}
+                onClick={() => setCount((count) => (count > 0 ? count - 1 : 0))}
               >
                 -
               </button>
@@ -61,4 +64,5 @@ function FoodPurchasePanel(Food: foodPurchasePanelProps) {
     </div>
   );
 }
+
 export default FoodPurchasePanel;
