@@ -3,6 +3,7 @@ import FoodPurchasePanel from "../components/FoodPurchasePanel";
 import NavBar from "../components/navBar";
 import "../css/FoodPage.css";
 import Footer from "../components/Footer";
+import { useParams } from "react-router-dom";
 
 // Define the Food interface
 interface Food {
@@ -15,6 +16,7 @@ interface Food {
 }
 
 function FoodPage() {
+  const { id } = useParams<{ id: string }>(); // Get the ID from the URL
   const [food, setFood] = useState<Food | null>(null);
   const [loading, setLoading] = useState(true);
 

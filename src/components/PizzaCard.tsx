@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 interface Food {
   id: number;
@@ -28,6 +29,7 @@ function PizzaCard({ food }: PizzaCardProps) {
               e.currentTarget.src = "/placeholder.png";
             }}
           />
+          <Link to={`/food/${food.id}`}></Link>
         </div>
         <div className="heading">
           {food.name}
