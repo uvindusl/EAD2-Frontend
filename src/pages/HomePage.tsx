@@ -9,7 +9,7 @@ import axios from "axios";
 // Define the Food interface
 interface Food {
   id: number;
-  imageData: string; // Base64 string for the image
+  picture: string; // Base64 string for the image
   name: string;
   price: number;
 }
@@ -25,37 +25,12 @@ function HomePage() {
     setLoading(true);
     axios
       .get(apiUrl)
-      .then(async (response) => {
-        // Fetch food data first
-        const foodsWithoutImages = response.data;
-
-        // Then fetch images for each food item
-        const foodPromises = foodsWithoutImages.map(async (food: any) => {
-          try {
-            // Get the base64 image data
-            const imageResponse = await axios.get(
-              `http://localhost:8080/foods/${food.id}/image/base64`
-            );
-            return {
-              id: food.id,
-              name: food.name,
-              price: food.price,
-              imageData: imageResponse.data, // Store the base64 string
-            };
-          } catch (err) {
-            console.error(`Error fetching image for food ${food.id}:`, err);
-            return {
-              id: food.id,
-              name: food.name,
-              price: food.price,
-              imageData: null, // No image available
-            };
-          }
-        });
-
-        // Wait for all image requests to complete
-        const foodData = await Promise.all(foodPromises);
-        setFoods(foodData);
+      .then((response) => {
+        if (response.status === 200) {
+          setFoods(response.data);
+        } else if (response.status === 204) {
+          setFoods([]); // Set to empty array if no content
+        }
         setLoading(false);
       })
       .catch((error) => {

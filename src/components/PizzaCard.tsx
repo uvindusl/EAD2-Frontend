@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 interface Food {
   id: number;
-  imageData: string; // Base64 string for the image
+  picture: string; // Base64 string for the image
   name: string;
   price: number;
 }
@@ -13,8 +13,8 @@ interface PizzaCardProps {
 
 function PizzaCard({ food }: PizzaCardProps) {
   // Create a proper data URI from base64 string
-  const imageSource = food.imageData
-    ? `data:image/jpeg;base64,${food.imageData}`
+  const imageSource = food.picture
+    ? `data:image/jpeg;base64,${food.picture}`
     : "/placeholder.png";
 
   return (
