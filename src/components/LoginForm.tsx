@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import "../css/LoginForm.css";
 
 const LoginForm = () => {
   return (
@@ -87,12 +88,11 @@ const StyledWrapper = styled.div`
   .card-side::before {
     position: absolute;
     content: "Log in";
-    left: -70px;
+    left: -100px;
     top: 0;
     width: 100px;
-    text-decoration: underline;
+    text-decoration: none;
     color: var(--font-color);
-    font-weight: 600;
   }
 
   .card-side::after {
@@ -103,7 +103,6 @@ const StyledWrapper = styled.div`
     width: 100px;
     text-decoration: none;
     color: var(--font-color);
-    font-weight: 600;
   }
 
   .toggle {
@@ -152,10 +151,12 @@ const StyledWrapper = styled.div`
 
   .toggle:checked ~ .card-side:before {
     text-decoration: none;
+    //font-weight: bolder;
   }
 
   .toggle:checked ~ .card-side:after {
-    text-decoration: underline;
+    text-decoration: none;
+    //font-weight: bolder;
   }
 
   /* card */
