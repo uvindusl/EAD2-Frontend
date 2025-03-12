@@ -34,8 +34,8 @@ function NavBar() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Cart
+              <a className="nav-link active" aria-current="page" href="/cart">
+                <img src="../src/assets/cart.svg" alt="cart" />
               </a>
             </li>
           </ul>
