@@ -1,7 +1,30 @@
 import styled from "styled-components";
 import "../css/LoginForm.css";
+import React, { useState } from "react";
 
-const LoginForm = () => {
+interface LoginFormProps {
+  onLogin: (username: string, tel: number) => void;
+  loading?: boolean;
+  error?: string | null;
+}
+
+const LoginForm: React.FC<LoginFormProps> = ({
+  //React.FC is represents the type of a functional component
+  onLogin,
+  loading = false,
+  error = null,
+}) => {
+  const [username, setUsername] = useState<string>("");
+  const [tel, setTel] = useState<string>("");
+
+  const handleLoginSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const telNumber = parseInt(tel, 10);
+    if (!isNaN(telNumber)) {
+      onLogin(username, telNumber);
+    }
+  };
+
   return (
     <StyledWrapper>
       <div className="wrapper">
@@ -13,20 +36,33 @@ const LoginForm = () => {
             <div className="flip-card__inner">
               <div className="flip-card__front">
                 <div className="title">Log in</div>
-                <form className="flip-card__form">
+                <form className="flip-card__form" onSubmit={handleLoginSubmit}>
                   <input
                     className="flip-card__input"
-                    name="email"
+                    name="username"
                     placeholder="User Name"
-                    type="email"
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    disabled={loading}
                   />
                   <input
                     className="flip-card__input"
-                    name="password"
-                    placeholder="Password"
-                    type="password"
+                    name="tel"
+                    placeholder="Phone Number"
+                    type="tel"
+                    value={tel}
+                    onChange={(e) => setTel(e.target.value)}
+                    disabled={loading}
                   />
-                  <button className="flip-card__btn">Let`s go!</button>
+                  {error && <div className="error-message">{error}</div>}
+                  <button
+                    className="flip-card__btn"
+                    type="submit"
+                    disabled={loading}
+                  >
+                    {loading ? "Loading..." : "Let's go!"}
+                  </button>
                 </form>
               </div>
               <div className="flip-card__back">
@@ -35,7 +71,7 @@ const LoginForm = () => {
                   <input
                     className="flip-card__input"
                     placeholder="Name"
-                    type="name"
+                    type="text"
                   />
                   <input
                     className="flip-card__input"
@@ -49,7 +85,9 @@ const LoginForm = () => {
                     placeholder="Password"
                     type="password"
                   />
-                  <button className="flip-card__btn">Confirm!</button>
+                  <button className="flip-card__btn" type="submit">
+                    Confirm!
+                  </button>
                 </form>
               </div>
             </div>
@@ -259,6 +297,21 @@ const StyledWrapper = styled.div`
     font-weight: 600;
     color: #333;
     cursor: pointer;
+  }
+
+  .error-message {
+    color: #d8000c;
+    background-color: #ffecec;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 250px;
+    text-align: center;
+  }
+
+  .flip-card__btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
   }
 `;
 

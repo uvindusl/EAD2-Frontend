@@ -19,8 +19,11 @@ function HomePage() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const customerid = sessionStorage.getItem("customerId");
+  console.log("Customer ID: ", customerid);
+
   useEffect(() => {
-    const apiUrl = "http://localhost:8080/food-micro/foods";
+    const apiUrl = "http://localhost:8081/food-micro/foods";
 
     setLoading(true);
     axios
@@ -29,7 +32,8 @@ function HomePage() {
         if (response.status === 200) {
           setFoods(response.data);
         } else if (response.status === 204) {
-          setFoods([]); // Set to empty array if no content
+          //HTTP 204 successfully connect with the server but no data returned
+          setFoods([]);
         }
         setLoading(false);
       })
