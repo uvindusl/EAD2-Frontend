@@ -9,6 +9,7 @@ import axios from "axios";
 interface Customer {
   customerId: number;
   customerName: string;
+  customerAddress: string;
   customerTel: number;
 }
 
@@ -57,12 +58,59 @@ function LoginPage() {
       });
   };
 
+  const handleSignUp = (username: string, address: string, tel: number) => {
+    const apiUrl = "http://localhost:8080/customer-micro/customers"; // API endpoint for customer creation
+
+    setLoading(true);
+    setError(null);
+
+    axios
+      .post(apiUrl, {
+        customerName: username,
+        customerAddress: address,
+        customerTel: tel,
+      })
+      .then((response) => {
+        if (response.status === 201) {
+          // HTTP 201 indicates resource creation
+          const newCustomer = response.data;
+          setCustomer(newCustomer);
+          navigate("/welcome"); // Redirect to a welcome or confirmation page
+
+          // Store the new customer ID
+          sessionStorage.setItem(
+            "customerId",
+            newCustomer.customerId.toString()
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error during sign-up:", error);
+        if (error.response) {
+          if (error.response.status === 400) {
+            setError("Sign-up failed. Please check the provided details.");
+          } else {
+            setError("Sign-up failed. Please try again later.");
+          }
+        } else {
+          setError("Network error. Please check your connection.");
+        }
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
   return (
     <div className="page-wrapper">
       <NavBar />
       <div className="content-area">
         <div className="login-container">
-          <LoginForm onLogin={handleLogin} loading={loading} error={error} />
+          <LoginForm
+            onLogin={handleLogin}
+            onSignUp={handleSignUp}
+            loading={loading}
+            error={error}
+          />
         </div>
       </div>
       <Footer />
