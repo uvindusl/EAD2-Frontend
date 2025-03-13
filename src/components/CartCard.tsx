@@ -15,8 +15,8 @@ interface CartCardProps {
 }
 
 function CartCard({ cart }: CartCardProps) {
-  const imageSource = cart.foodimg.startsWith("data:image")
-    ? cart.foodimg
+  const imageSource = cart.foodimg
+    ? `data:image/jpeg;base64,${cart.foodimg}`
     : "/placeholder.png";
 
   return (
@@ -33,7 +33,7 @@ function CartCard({ cart }: CartCardProps) {
 
         <div className="cart-actions">
           <button className="cart-delete-button">
-            <img src="/assets/delete.svg" alt="Delete" />
+            <img src="../src/assets/delete.svg" alt="Delete" />
           </button>
 
           <div className="cart-image">

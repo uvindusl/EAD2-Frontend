@@ -1,4 +1,3 @@
-// CartPage.tsx
 import NavBar from "../components/navBar";
 import Footer from "../components/Footer";
 import "../css/CartPage.css";
@@ -7,14 +6,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 interface CartItem {
-  cartId: number; // Changed to cartId to match response
-  customerId: number; // Changed to customerId to match response
-  foodId: number; // Changed to foodId to match response
-  quantity: number; // Changed to quantity to match response
-  subTotal: number; // Changed to subTotal to match response
+  cartId: number;
+  customerId: number;
+  foodId: number;
+  quantity: number;
+  subTotal: number;
 }
 
 interface FoodItem {
+  id: number;
   fid: number;
   picture: string;
   name: string;
@@ -35,60 +35,49 @@ function CartPage() {
       return;
     }
 
-    const apiUrl = `http://localhost:8083/order-micro/carts/${customerid}`;
+    const fetchCartData = async () => {
+      try {
+        const cartResponse = await axios.get(
+          `http://localhost:8083/order-micro/carts/${customerid}`
+        );
 
-    axios
-      .get(apiUrl)
-      .then((response) => {
-        if (response.status === 200) {
-          console.log("cart:", response.data);
-          setCart(response.data);
-
-          const fetchFoodDetails = async () => {
-            const foodDetails: FoodItem[] = [];
-            for (const item of response.data) {
-              if (item.foodId !== undefined && item.foodId !== null) {
-                console.log("food id", item.foodId);
-                try {
-                  const foodResponse = await axios.get(
-                    `http://localhost:8081/food-micro/foods/${item.foodId}`
-                  );
-                  if (foodResponse.status === 200) {
-                    foodDetails.push(foodResponse.data);
-                  } else {
-                    console.error(
-                      `Failed to fetch food with ID ${item.foodId}`
-                    );
-                  }
-                } catch (foodError) {
-                  console.error(
-                    `Error fetching food with ID ${item.foodId}:`,
-                    foodError
-                  );
-                }
-              } else {
-                console.error("item.foodId is undefined or null");
-              }
-            }
-            setFood(foodDetails);
-          };
-
-          fetchFoodDetails();
-        } else {
-          setError("Failed to fetch cart data.");
+        if (cartResponse.status === 200) {
+          console.log("Fetched cart data:", cartResponse.data);
+          setCart(cartResponse.data);
+          fetchFoodDetails(cartResponse.data);
         }
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching cart data:", error);
-        if (error.response && error.response.status === 404) {
-          setError("Cart not found.");
-        } else {
-          setError("Failed to fetch cart data. Please try again later.");
-        }
-      })
-      .finally(() => {
+        setError("Failed to fetch cart data. Please try again later.");
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    const fetchFoodDetails = async (cartItems: CartItem[]) => {
+      try {
+        const foodPromises = cartItems.map((item) =>
+          axios
+            .get(`http://localhost:8081/food-micro/foods/${item.foodId}`)
+            .then((res) => {
+              console.log(`Fetched food data for ID ${item.foodId}:`, res.data);
+              return res.data;
+            })
+            .catch((err) => {
+              console.error(`Error fetching food with ID ${item.foodId}:`, err);
+              return null;
+            })
+        );
+
+        const foodDetails = (await Promise.all(foodPromises)).filter(Boolean);
+        console.log("Final food details array:", foodDetails);
+        setFood(foodDetails);
+      } catch (error) {
+        console.error("Error fetching food details:", error);
+      }
+    };
+
+    fetchCartData();
   }, [customerid]);
 
   return (
@@ -115,13 +104,22 @@ function CartPage() {
               </div>
 
               {cart.map((cartItem) => {
-                const foodItem = food.find((f) => f.fid === cartItem.foodId);
+                const foodItem = food.find(
+                  (f) => Number(f.id) === Number(cartItem.foodId)
+                );
 
-                console.log("cartItem:", cartItem);
-                console.log("foodItem:", foodItem);
+                console.log("Matching cartItem:", cartItem);
+                console.log("Matched foodItem:", foodItem);
 
                 if (!foodItem) {
-                  return null;
+                  return (
+                    <div key={cartItem.cartId} className="cart-card">
+                      <p>
+                        ⚠️ Food details not available for food ID{" "}
+                        {cartItem.foodId}
+                      </p>
+                    </div>
+                  );
                 }
 
                 return (
