@@ -115,8 +115,7 @@ function CartPage() {
                   return (
                     <div key={cartItem.cartId} className="cart-card">
                       <p>
-                        ⚠️ Food details not available for food ID{" "}
-                        {cartItem.foodId}
+                        Food details not available for food ID {cartItem.foodId}
                       </p>
                     </div>
                   );
@@ -149,7 +148,7 @@ function CartPage() {
           <div className="summary-row sub-total">
             <span>Sub Total:</span>
             <span className="summary-value">
-              $
+              RS.
               {cart
                 .reduce((sum, item) => sum + (item.subTotal ?? 0), 0)
                 .toFixed(2)}

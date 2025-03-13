@@ -22,31 +22,30 @@ function CartCard({ cart }: CartCardProps) {
   return (
     <div className="cart-card">
       <div className="cart-content">
+        <div className="cart-image">
+          <img
+            src={imageSource}
+            alt={cart.foodname}
+            onError={(e) => {
+              e.currentTarget.src = "/placeholder.png";
+            }}
+          />
+        </div>
+
         <div className="cart-info">
           <h3 className="cart-title">{cart.foodname}</h3>
           <p className="cart-description">{cart.fooddescription}</p>
-          <p className="cart-price">
-            Price: ${cart.subtotal?.toFixed(2) ?? "0.00"}
-          </p>
-          <p className="cart-qty">Qty: {cart.qty}</p>
+          <div className="cart-meta">
+            <p className="cart-qty">Qty {cart.qty}</p>
+            <p>Price RS. {cart.subtotal?.toFixed(2) ?? "0.00"}</p>
+          </div>
         </div>
 
         <div className="cart-actions">
           <button className="cart-delete-button">
             <img src="../src/assets/delete.svg" alt="Delete" />
           </button>
-
-          <div className="cart-image">
-            <img
-              src={imageSource}
-              alt={cart.foodname}
-              onError={(e) => {
-                e.currentTarget.src = "/placeholder.png";
-              }}
-            />
-          </div>
-
-          <input type="checkbox" className="cart-select" />
+          <button className="checkout-btn">Checkout</button>
         </div>
       </div>
     </div>
