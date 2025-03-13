@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 interface LoginFormProps {
   onLogin: (username: string, tel: number) => void;
+  onSignUp: (username: string, address: string, tel: number) => void;
   loading?: boolean;
   error?: string | null;
 }
@@ -11,10 +12,12 @@ interface LoginFormProps {
 const LoginForm: React.FC<LoginFormProps> = ({
   //React.FC is represents the type of a functional component
   onLogin,
+  onSignUp,
   loading = false,
   error = null,
 }) => {
   const [username, setUsername] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
   const [tel, setTel] = useState<string>("");
 
   const handleLoginSubmit = (e: React.FormEvent) => {
@@ -25,6 +28,13 @@ const LoginForm: React.FC<LoginFormProps> = ({
     }
   };
 
+  const handleSignUpSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const telNumber = parseInt(tel, 10);
+    if (!isNaN(telNumber)) {
+      onSignUp(username, address, telNumber);
+    }
+  };
   return (
     <StyledWrapper>
       <div className="wrapper">
@@ -67,23 +77,32 @@ const LoginForm: React.FC<LoginFormProps> = ({
               </div>
               <div className="flip-card__back">
                 <div className="title">Sign up</div>
-                <form className="flip-card__form">
+                <form className="flip-card__form" onSubmit={handleSignUpSubmit}>
                   <input
                     className="flip-card__input"
                     placeholder="Name"
                     type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    disabled={loading}
                   />
                   <input
                     className="flip-card__input"
-                    name="email"
-                    placeholder="Email"
-                    type="email"
+                    name="text"
+                    placeholder="Address"
+                    type="text"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    disabled={loading}
                   />
                   <input
                     className="flip-card__input"
                     name="password"
-                    placeholder="Password"
-                    type="password"
+                    placeholder="Phone Number"
+                    type="tel"
+                    value={tel}
+                    onChange={(e) => setTel(e.target.value)}
+                    disabled={loading}
                   />
                   <button className="flip-card__btn" type="submit">
                     Confirm!
