@@ -59,7 +59,7 @@ function LoginPage() {
   };
 
   const handleSignUp = (username: string, address: string, tel: number) => {
-    const apiUrl = "http://localhost:8080/customer-micro/customers"; // Adjust your API endpoint if needed
+    const apiUrl = "http://localhost:8080/customer-micro/customers"; // API endpoint for customer creation
 
     setLoading(true);
     setError(null);
