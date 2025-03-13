@@ -1,3 +1,4 @@
+// CartPage.tsx
 import NavBar from "../components/navBar";
 import Footer from "../components/Footer";
 import "../css/CartPage.css";
@@ -47,6 +48,7 @@ function CartPage() {
             const foodDetails: FoodItem[] = [];
             for (const item of response.data) {
               if (item.foodId !== undefined && item.foodId !== null) {
+                console.log("food id", item.foodId);
                 try {
                   const foodResponse = await axios.get(
                     `http://localhost:8081/food-micro/foods/${item.foodId}`
@@ -114,6 +116,9 @@ function CartPage() {
 
               {cart.map((cartItem) => {
                 const foodItem = food.find((f) => f.fid === cartItem.foodId);
+
+                console.log("cartItem:", cartItem);
+                console.log("foodItem:", foodItem);
 
                 if (!foodItem) {
                   return null;

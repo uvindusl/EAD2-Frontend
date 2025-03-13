@@ -1,3 +1,4 @@
+// CartCard.tsx
 import "../css/CartCard.css";
 
 interface Cart {
