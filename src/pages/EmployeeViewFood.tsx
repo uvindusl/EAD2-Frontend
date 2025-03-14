@@ -1,7 +1,6 @@
-// FoodGridPage.tsx
 import React, { useState, useEffect } from "react";
-import FoodGrid from "../components/FoodGrid"; // Assuming FoodGrid.tsx is in the same directory or adjust the path
-import "../css/EmployeeViewFood.css"; // Create a CSS file for styling
+import FoodGrid from "../components/FoodGrid";
+import "../css/EmployeeViewFood.css";
 import axios from "axios";
 
 interface Food {
