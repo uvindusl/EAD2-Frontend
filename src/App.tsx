@@ -6,7 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import OrderPage from "./pages/OrderPage";
 import CartPage from "./pages/CartPage";
 import EmployeeLoginPage from "./pages/EmployeeLoginPage";
-import CheckoutPage from "./pages/CheckoutPage";
+import EmployeeViewFood from "./pages/EmployeeViewFood";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Route path="/order" element={<OrderPage />}></Route>
           <Route path="/cart" element={<CartPage />}></Route>
           <Route path="/emplogin" element={<EmployeeLoginPage />}></Route>
-          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/viewfood" element={<EmployeeViewFood />}></Route>
         </Routes>
       </main>
     </div>
