@@ -8,6 +8,8 @@ import EmployeeLoginPage from "./pages/EmployeeLoginPage";
 import EmployeesViewPage from "./pages/EmployeesViewPage";
 import EmployeeViewFood from "./pages/EmployeeViewFood";
 import CheckoutPage from "./pages/CheckoutPage";
+import AddEmployeePage from "./pages/AddEmployeePage";
+import UpdateEmployee from "./components/UpdateEmployee";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/empview" element={<EmployeesViewPage />}></Route>
           <Route path="/foodview" element={<EmployeeViewFood />}></Route>
           <Route path="/checkout" element={<CheckoutPage />}></Route>
+          <Route path="/addemployee" element={<AddEmployeePage />}></Route>
+          <Route path="/updateemployee/:id" element={<UpdateEmployee />} />
         </Routes>
       </main>
     </div>
