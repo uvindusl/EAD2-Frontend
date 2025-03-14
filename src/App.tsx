@@ -7,7 +7,6 @@ import OrderPage from "./pages/OrderPage";
 import CartPage from "./pages/CartPage";
 import EmployeeLoginPage from "./pages/EmployeeLoginPage";
 import EmployeeViewFood from "./pages/EmployeeViewFood";
-import CheckoutPage from "./pages/CheckoutPage";
 
 function App() {
   return (
@@ -21,7 +20,6 @@ function App() {
           <Route path="/cart" element={<CartPage />}></Route>
           <Route path="/emplogin" element={<EmployeeLoginPage />}></Route>
           <Route path="/viewfood" element={<EmployeeViewFood />}></Route>
-          <Route path="/checkout" element={<CheckoutPage />} />
         </Routes>
       </main>
     </div>
