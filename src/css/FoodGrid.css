@@ -24,12 +24,14 @@
   font-size: 16px;
   font-weight: 600;
   margin: 0 0 4px 0;
+  text-align: left;
 }
 
 .cart-description {
   color: #666;
   font-size: 14px;
   margin: 0;
+  text-align: left;
 }
 
 .cart-price {
@@ -73,7 +75,7 @@
 }
 
 .cart-delete-button {
-  background-color: #ff4d4f;
+  background-color: #f70004;
   border: none;
   border-radius: 4px;
   color: white;
@@ -85,6 +87,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.cart-delete-button:hover{
+  background-color: #8f0f0f;
 }
 
 .cart-delete-button::before {

@@ -25,7 +25,7 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .food-grid-page {
+  .food-grid-page-evf {
     padding: 16px;
   }
 }
