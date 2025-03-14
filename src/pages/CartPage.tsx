@@ -4,7 +4,6 @@ import "../css/CartPage.css";
 import CartCard from "../components/CartCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 interface CartItem {
   cartId: number;
