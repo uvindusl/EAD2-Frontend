@@ -1,41 +1,98 @@
-import React, { useState } from "react";
-import "../css/EmployeeForms.css"; 
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import "../css/EmployeeForms.css";
+import { useNavigate } from "react-router-dom";
 
 function UpdateEmployee() {
+  const { id } = useParams();
   const [employee, setEmployee] = useState({
     name: "",
     address: "",
     telephone: "",
-    password: "",
-    retypePassword: "",
   });
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8082/employee-micro/employees/${id}`)
+      .then((response) => {
+        const emp = response.data;
+        setEmployee({
+          name: emp.employeeName,
+          address: emp.employeeAddress,
+          telephone: emp.employeeTel,
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching employee:", error);
+        setError("Failed to load employee data.");
+      });
+  }, [id]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmployee({
+      ...employee,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Updated Employee Data:", employee);
-    alert("Employee Updated Successfully!");
+
+    try {
+      await axios.put(`http://localhost:8082/employee-micro/employees/${id}`, {
+        employeeName: employee.name,
+        employeeAddress: employee.address,
+        employeeTel: employee.telephone,
+      });
+
+      alert("Employee Updated Successfully!");
+      setError(null);
+      navigate("/empview");
+    } catch (error) {
+      console.error("Error updating employee:", error);
+      setError("Failed to update employee.");
+    }
   };
 
   return (
     <div className="form-container">
       <h2>Update Employee</h2>
+      {error && <p className="error-message">{error}</p>}
+
       <form onSubmit={handleSubmit}>
         <label>Employee Name</label>
-        <input type="text" name="name" value={employee.name} required />
+        <input
+          type="text"
+          name="name"
+          value={employee.name}
+          onChange={handleChange}
+          required
+        />
 
         <label>Employee Address</label>
-        <input type="text" name="address" value={employee.address} required />
+        <input
+          type="text"
+          name="address"
+          value={employee.address}
+          onChange={handleChange}
+          required
+        />
 
         <label>Employee Telephone Number</label>
-        <input type="text" name="telephone" value={employee.telephone} required />
+        <input
+          type="text"
+          name="telephone"
+          value={employee.telephone}
+          onChange={handleChange}
+          required
+        />
 
-        <label>Password</label>
-        <input type="password" name="password" value={employee.password} required />
-
-        <label>Retype Password</label>
-        <input type="password" name="retypePassword" value={employee.retypePassword} required />
-
-        <button type="submit" className="submit-btn">Update</button>
+        <button type="submit" className="submit-btn">
+          Update
+        </button>
       </form>
     </div>
   );
