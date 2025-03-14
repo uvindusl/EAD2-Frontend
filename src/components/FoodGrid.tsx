@@ -18,16 +18,16 @@ function FoodGrid({ food }: FoodGridProps) {
     : "/placeholder.png";
 
   return (
-    <div className="cart-card">
-      <div className="cart-content">
-        <div className="cart-info">
-          <h3 className="cart-title">{food.name}</h3>
-          <p className="cart-description">{food.description}</p>
+    <div className="food-card">
+      <div className="food-content">
+        <div className="food-info">
+          <h3 className="food-title">{food.name}</h3>
+          <p className="food-description">{food.description}</p>
         </div>
-        <div className="cart-price">
+        <div className="food-price">
           <p>Rs. {food.price?.toFixed(2) ?? "0.00"}</p>
         </div>
-        <div className="cart-image">
+        <div className="food-image">
           <img
             src={imageSource}
             alt={food.name}
@@ -36,9 +36,9 @@ function FoodGrid({ food }: FoodGridProps) {
             }}
           />
         </div>
-        <div className="cart-actions">
-          <button className="checkout-btn">Edit</button>
-          <button className="cart-delete-button">Delete</button>
+        <div className="food-actions">
+          <button className="food-checkout-btn">Edit</button>
+          <button className="food-delete-button">Delete</button>
         </div>
       </div>
     </div>
