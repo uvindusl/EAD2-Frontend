@@ -28,7 +28,7 @@ function EmployeesViewPage() {
 
         if (response.status === 200) {
           const mappedEmployees = response.data.map((emp: any) => ({
-            id: emp.employeeId,
+            id: emp.employeeId, //use this id for deleting employee
             name: emp.employeeName,
             address: emp.employeeAddress,
             tel: emp.employeeTel,
