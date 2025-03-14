@@ -1,6 +1,17 @@
 import "../css/EmployeeCard.css";
 
-function EmployeeCard() {
+interface Employee {
+  id: number;
+  name: string;
+  address: string;
+  tel: string;
+}
+
+interface EmployeeProps {
+  employee: Employee;
+}
+
+function EmployeeCard({ employee }: EmployeeProps) {
   return (
     <div>
       <div className="employee-card">
@@ -8,9 +19,9 @@ function EmployeeCard() {
           <div className="person-icon"></div>
         </div>
         <div className="employee-card__info">
-          <h4>John Doe</h4>
-          <p>472908312313</p>
-          <p>Ragama</p>
+          <h4>{employee.name}</h4>
+          <p>{employee.tel}</p>
+          <p>{employee.address}</p>
         </div>
         <div className="btn-group">
           <div>
