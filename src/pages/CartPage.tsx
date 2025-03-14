@@ -4,6 +4,7 @@ import "../css/CartPage.css";
 import CartCard from "../components/CartCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 interface CartItem {
   cartId: number;
@@ -27,6 +28,28 @@ function CartPage() {
   const [food, setFood] = useState<FoodItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const SingleDelete = async (cartId: number) => {
+    try {
+      const apiUrl = `http://localhost:8083/order-micro/carts/byCartId/${cartId}`;
+      await axios.delete(apiUrl);
+      window.location.reload();
+    } catch (error) {
+      console.error("Error", error);
+      setError("Failed to delete");
+    }
+  };
+
+  const DeleteAll = async (customerId: number) => {
+    try {
+      const apiUrl = `http://localhost:8083/order-micro/carts/byCustomerId/${customerId}`;
+      await axios.delete(apiUrl);
+      window.location.reload();
+    } catch (error) {
+      console.error("Error", error);
+      setError("Failed to delete");
+    }
+  };
 
   useEffect(() => {
     if (!customerid) {
@@ -97,7 +120,10 @@ function CartPage() {
                   <label htmlFor="select-all">Select All</label>
                 </div>
                 <div className="delete-all">
-                  <button className="delete-btn">
+                  <button
+                    className="delete-btn"
+                    onClick={() => DeleteAll(customerid)}
+                  >
                     <i className="trash-icon"></i> Delete All
                   </button>
                 </div>
@@ -131,7 +157,10 @@ function CartPage() {
                       foodimg: foodItem.picture,
                       qty: cartItem.quantity,
                       subtotal: cartItem.subTotal ?? 0,
+                      cartId: cartItem.cartId,
+                      customerId: cartItem.customerId,
                     }}
+                    handleSingleDelete={SingleDelete}
                   />
                 );
               })}
