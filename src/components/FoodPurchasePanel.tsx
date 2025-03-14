@@ -1,9 +1,9 @@
 import "../css/FoodPurchasePanel.css";
-import { useState } from "react";
+import React, { useState } from "react";
 
 interface Food {
   id: number;
-  picture: string; // Base64 string for the image
+  picture: string;
   name: string;
   price: number;
   description: string;
@@ -15,6 +15,44 @@ interface FoodPurchasePanelProps {
 
 function FoodPurchasePanel({ food }: FoodPurchasePanelProps) {
   const [count, setCount] = useState(0);
+  const [addtocartloading, setaddtocartloading] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false); // New state
+
+  const customerid = sessionStorage.getItem("customerId");
+  console.log("Customer ID: ", customerid);
+
+  const handleaddtocart = async () => {
+    setaddtocartloading(true);
+    try {
+      const total = food.price * count;
+      const response = await fetch("http://localhost:8083/order-micro/carts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          customerId: customerid,
+          foodId: food.id,
+          quantity: count,
+          subTotal: total,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const result = await response.json();
+      console.log("Add to cart result:", result);
+
+      setShowSuccessPopup(true); // Show the popup
+      setTimeout(() => setShowSuccessPopup(false), 3000); // Hide after 3 seconds
+    } catch (error) {
+      console.error("Error adding to cart:", error);
+    } finally {
+      setaddtocartloading(false);
+    }
+  };
 
   const imageSource = food.picture
     ? `data:image/jpeg;base64,${food.picture}`
@@ -57,10 +95,19 @@ function FoodPurchasePanel({ food }: FoodPurchasePanelProps) {
 
           <div className="product-actions">
             <button className="action-button buy-now">Buy Now</button>
-            <button className="action-button add-to-cart">Add to cart</button>
+            <button
+              className="action-button add-to-cart"
+              onClick={handleaddtocart}
+              disabled={addtocartloading}
+            >
+              {addtocartloading ? "loading..." : " Add to cart"}
+            </button>
           </div>
         </div>
       </div>
+      {showSuccessPopup && (
+        <div className="success-popup">Successfully added to the cart!</div>
+      )}
     </div>
   );
 }
