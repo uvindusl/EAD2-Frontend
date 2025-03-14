@@ -21,7 +21,7 @@ function EmployeeLoginPage() {
   const navigate = useNavigate();
 
   const handleLogin = (username: string, password: string) => {
-    const apiUrl = `http://localhost:8080/employee-micro/employees?name=${username}&password=${password}`;
+    const apiUrl = `http://localhost:8082/employee-micro/employees?name=${username}&password=${password}`;
 
     setLoading(true);
     setError(null);

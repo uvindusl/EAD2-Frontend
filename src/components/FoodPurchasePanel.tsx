@@ -1,5 +1,5 @@
 import "../css/FoodPurchasePanel.css";
-import React, { useState } from "react";
+import { useState } from "react";
 
 interface Food {
   id: number;

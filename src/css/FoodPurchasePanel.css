@@ -68,7 +68,7 @@ body {
 .quantity-button {
   background: none;
   border: none;
-  font-size: 18px;
+  font-size: 10px;
   cursor: pointer;
   color: #333;
 }
@@ -81,7 +81,7 @@ body {
 }
 
 .action-button {
-  padding: 12px 20px;
+  padding: 12px 10px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
@@ -99,12 +99,15 @@ body {
 }
 
 .btn1 {
-  background-color: #ff8c00;
+  background-color: #07b404;
   color: #ffffff;
   border: none;
-  margin-right: 20px;
+  margin-right: 10px;
   cursor: pointer;
   border-radius: 5px;
+  height: 28px;
+  width: 28px;
+  padding: 0px;
 }
 
 button:hover {

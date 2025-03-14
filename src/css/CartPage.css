@@ -48,7 +48,7 @@
 .delete-btn {
   display: flex;
   align-items: center;
-  background: none;
+  background-color: #ff0000;
   border: none;
   cursor: pointer;
   font-size: 16px;
