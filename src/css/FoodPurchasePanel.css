@@ -110,3 +110,16 @@ body {
 button:hover {
   background-color: #ff7000;
 }
+
+.success-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #4caf50; /* Green background */
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
