@@ -1,9 +1,9 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 interface Food {
   id: number;
-  img: string;
-  title: string;
+  picture: string; // Base64 string for the image
   name: string;
   price: number;
 }
@@ -13,16 +13,29 @@ interface PizzaCardProps {
 }
 
 function PizzaCard({ food }: PizzaCardProps) {
+  // Create a proper data URI from base64 string
+  const imageSource = food.picture
+    ? `data:image/jpeg;base64,${food.picture}`
+    : "/placeholder.png";
+
   return (
     <StyledWrapper>
       <div className="card">
-        <div className="card-image">
-          <img src={food.img} alt={food.title} />
-        </div>
-        <div className="heading">
-          {food.name}
-          <div className="author">{food.price}</div>
-        </div>
+        <Link to={`/food/${food.id}`}>
+          <div className="card-image">
+            <img
+              src={imageSource}
+              alt={food.name}
+              onError={(e) => {
+                e.currentTarget.src = "/placeholder.png";
+              }}
+            />
+          </div>
+          <div className="heading">
+            {food.name}
+            <div className="author">${food.price}</div>
+          </div>
+        </Link>
       </div>
     </StyledWrapper>
   );
@@ -37,26 +50,23 @@ const StyledWrapper = styled.div`
   }
 
   .card-image {
-    background-color: rgb(236, 236, 236);
+    position: relative; // Needed for link to cover image
+  }
+
+  .card-image img {
     width: 100%;
     height: 130px;
     border-radius: 6px 6px 0 0;
+    object-fit: cover;
   }
 
-  .card-image:hover {
-    transform: scale(0.98);
-  }
-
-  .category {
-    text-transform: uppercase;
-    font-size: 0.7em;
-    font-weight: 600;
-    color: rgb(63, 121, 230);
-    padding: 10px 7px 0;
-  }
-
-  .category:hover {
-    cursor: pointer;
+  .card-image a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block; // Make link cover the image
   }
 
   .heading {
@@ -65,23 +75,11 @@ const StyledWrapper = styled.div`
     padding: 7px;
   }
 
-  .heading:hover {
-    cursor: pointer;
-  }
-
   .author {
     color: gray;
     font-weight: 400;
     font-size: 11px;
     padding-top: 20px;
-  }
-
-  .name {
-    font-weight: 600;
-  }
-
-  .name:hover {
-    cursor: pointer;
   }
 `;
 

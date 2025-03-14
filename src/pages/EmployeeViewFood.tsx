@@ -1,26 +1,21 @@
-import { useState, useEffect } from "react";
-import NavBar from "../components/navBar";
-import PizzaCard from "../components/PizzaCard";
-import Footer from "../components/Footer";
-import SearchBar from "../components/SearchBar";
-import "../css/HomePage.css";
+import React, { useState, useEffect } from "react";
+import FoodGrid from "../components/FoodGrid";
+import "../css/EmployeeViewFood.css";
 import axios from "axios";
+import NavBar from "../components/navBar";
+import Footer from "../components/Footer";
 
-// Define the Food interface
 interface Food {
-  id: number;
-  picture: string; // Base64 string for the image
+  foodid: string;
   name: string;
+  description: string;
+  picture: string;
   price: number;
 }
-
-function HomePage() {
+function EmployeeViewFood() {
   const [foods, setFoods] = useState<Food[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
-  const customerid = sessionStorage.getItem("customerId");
-  console.log("Customer ID: ", customerid);
 
   useEffect(() => {
     const apiUrl = "http://localhost:8081/food-micro/foods";
@@ -45,28 +40,24 @@ function HomePage() {
   }, []);
 
   return (
-    <div className="home">
+    <>
       <NavBar />
-      <div className="home-container">
-        <h1 className="home-title">Our Pizza Menu</h1>
-        <div className="search-wrapper">
-          <SearchBar />
-        </div>
+      <div className="food-grid-page-evf">
         {loading ? (
           <p className="loading-message">Loading menu items...</p>
         ) : error ? (
           <p className="error-message">{error}</p>
         ) : (
-          <div className="food-grid">
+          <div className="food-grid-evf">
             {foods.map((food) => (
-              <PizzaCard key={food.id} food={food} />
+              <FoodGrid key={food.foodid} food={food} />
             ))}
           </div>
         )}
       </div>
       <Footer />
-    </div>
+    </>
   );
 }
 
-export default HomePage;
+export default EmployeeViewFood;
