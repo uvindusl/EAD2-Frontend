@@ -2,23 +2,20 @@ import React, { useState, useEffect } from "react";
 import FoodGrid from "../components/FoodGrid";
 import "../css/EmployeeViewFood.css";
 import axios from "axios";
+import NavBar from "../components/navBar";
+import Footer from "../components/Footer";
 
 interface Food {
   foodid: string;
-  foodname: string;
-  fooddescription: string;
-  foodimg: string;
-  qty: number;
+  name: string;
+  description: string;
+  picture: string;
   price: number;
 }
-
 function EmployeeViewFood() {
   const [foods, setFoods] = useState<Food[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
-  const customerid = sessionStorage.getItem("customerId");
-  console.log("Customer ID: ", customerid);
 
   useEffect(() => {
     const apiUrl = "http://localhost:8081/food-micro/foods";
@@ -43,11 +40,23 @@ function EmployeeViewFood() {
   }, []);
 
   return (
-    <div className="food-grid-page">
-      {foods.map((food) => (
-        <FoodGrid key={food.foodid} food={food} />
-      ))}
-    </div>
+    <>
+      <NavBar />
+      <div className="food-grid-page">
+        {loading ? (
+          <p className="loading-message">Loading menu items...</p>
+        ) : error ? (
+          <p className="error-message">{error}</p>
+        ) : (
+          <div className="food-grid">
+            {foods.map((food) => (
+              <FoodGrid key={food.foodid} food={food} />
+            ))}
+          </div>
+        )}
+      </div>
+      <Footer />
+    </>
   );
 }
 

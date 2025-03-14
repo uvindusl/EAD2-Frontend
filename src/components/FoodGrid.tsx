@@ -1,11 +1,10 @@
-import "../css/CartCard.css";
+import "../css/FoodGrid.css";
 
 interface Food {
   foodid: string;
-  foodname: string;
-  fooddescription: string;
-  foodimg: string;
-  qty: number;
+  name: string;
+  description: string;
+  picture: string;
   price: number;
 }
 
@@ -14,34 +13,32 @@ interface FoodGridProps {
 }
 
 function FoodGrid({ food }: FoodGridProps) {
-  const imageSource = food.foodimg
-    ? `data:image/jpeg;base64,${food.foodimg}`
+  const imageSource = food.picture
+    ? `data:image/jpeg;base64,${food.picture}`
     : "/placeholder.png";
 
   return (
     <div className="cart-card">
       <div className="cart-content">
+        <div className="cart-info">
+          <h3 className="cart-title">{food.name}</h3>
+          <p className="cart-description">{food.description}</p>
+        </div>
+        <div className="cart-price">
+          <p>Rs. {food.price?.toFixed(2) ?? "0.00"}</p>
+        </div>
         <div className="cart-image">
           <img
             src={imageSource}
-            alt={food.foodname}
+            alt={food.name}
             onError={(e) => {
               e.currentTarget.src = "/placeholder.png";
             }}
           />
         </div>
-
-        <div className="cart-info">
-          <h3 className="cart-title">{food.foodname}</h3>
-          <p className="cart-description">{food.fooddescription}</p>
-          <div className="cart-meta">
-            <p>Price RS. {food.price?.toFixed(2) ?? "0.00"}</p>
-          </div>
-        </div>
-
         <div className="cart-actions">
+          <button className="checkout-btn">Edit</button>
           <button className="cart-delete-button">Delete</button>
-          <button className="checkout-btn">Update</button>
         </div>
       </div>
     </div>
