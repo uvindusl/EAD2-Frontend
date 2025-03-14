@@ -42,13 +42,13 @@ function EmployeeViewFood() {
   return (
     <>
       <NavBar />
-      <div className="food-grid-page">
+      <div className="food-grid-page-evf">
         {loading ? (
           <p className="loading-message">Loading menu items...</p>
         ) : error ? (
           <p className="error-message">{error}</p>
         ) : (
-          <div className="food-grid">
+          <div className="food-grid-evf">
             {foods.map((food) => (
               <FoodGrid key={food.foodid} food={food} />
             ))}

@@ -1,4 +1,4 @@
-.food-grid-page {
+.food-grid-page-evf {
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
@@ -6,7 +6,7 @@
   min-height: 100vh;
 }
 
-.food-grid {
+.food-grid-evf {
   display: flex;
   flex-direction: column;
   gap: 16px;
