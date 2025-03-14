@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import "../css/EmployeeCard.css";
 
 interface Employee {
@@ -12,6 +13,12 @@ interface EmployeeProps {
 }
 
 function EmployeeCard({ employee }: EmployeeProps) {
+  const navigate = useNavigate();
+
+  const handleEditClick = () => {
+    navigate(`/updateemployee/${employee.id}`); // Navigate to Update Page
+  };
+
   return (
     <div>
       <div className="employee-card">
@@ -25,7 +32,7 @@ function EmployeeCard({ employee }: EmployeeProps) {
         </div>
         <div className="btn-group">
           <div>
-            <button className="btnEdit">
+            <button className="btnEdit" onClick={handleEditClick}>
               <div className="gear-icon"></div>
             </button>
           </div>
