@@ -1,6 +1,11 @@
 .employeeCard-container {
+  width: 1050px;
+  padding: 10px;
+  background-color: #b4ab9e;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 20px;
+  justify-self: center;
+  border-radius: 25px;
 }
