@@ -75,13 +75,7 @@ function LoginPage() {
           // HTTP 201 indicates resource creation
           const newCustomer = response.data;
           setCustomer(newCustomer);
-          navigate("/welcome"); // Redirect to a welcome or confirmation page
-
-          // Store the new customer ID
-          sessionStorage.setItem(
-            "customerId",
-            newCustomer.customerId.toString()
-          );
+          navigate("/"); // Redirect to a welcome or confirmation page
         }
       })
       .catch((error) => {

@@ -35,7 +35,12 @@ function FoodPage() {
       .get(apiUrl)
       .then((response) => {
         if (response.status === 200) {
+          const foodid = response.data; //to store the food id
           setFood(response.data);
+
+          //store customer id in sessionstorage
+          sessionStorage.setItem("foodID", foodid.id.toString());
+          // console.log(id);
         } else if (response.status === 404) {
           setFood(null); // Food not found
         } else {
