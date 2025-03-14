@@ -1,5 +1,5 @@
 import EmployeeCard from "../components/EmployeeCard";
-//import "../css/EmployeesViewPage.css";
+import "../css/EmployeeViewPage.css";
 
 function EmployeesViewPage() {
   return (
