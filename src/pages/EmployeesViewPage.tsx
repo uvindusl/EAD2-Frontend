@@ -35,7 +35,7 @@ function EmployeesViewPage() {
     axios
       .get(apiUrl)
       .then((response) => {
-        console.log("API Response:", response.data); // Debugging output
+        console.log("API Response:", response.data);
 
         if (response.status === 200) {
           const mappedEmployees = response.data.map((emp: any) => ({

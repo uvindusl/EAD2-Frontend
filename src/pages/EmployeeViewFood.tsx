@@ -20,7 +20,7 @@ function EmployeeViewFood() {
 
   const DeleteClick = async (id: number) => {
     try {
-      const apiUrl = `http://localhost:8081/food-micro/foods/${id}`; // change foodId to id
+      const apiUrl = `http://localhost:8081/food-micro/foods/${id}`;
       await axios.delete(apiUrl);
       window.location.reload();
       console.log(apiUrl);
