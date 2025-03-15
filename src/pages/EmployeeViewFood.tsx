@@ -6,7 +6,7 @@ import NavBar from "../components/navBar";
 import Footer from "../components/Footer";
 
 interface Food {
-  foodId: string;
+  id: number;
   name: string;
   description: string;
   picture: string;
@@ -18,9 +18,9 @@ function EmployeeViewFood() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const DeleteClick = async (foodId: string) => {
+  const DeleteClick = async (id: number) => {
     try {
-      const apiUrl = `http://localhost:8081/food-micro/foods/${foodId}`;
+      const apiUrl = `http://localhost:8081/food-micro/foods/${id}`; // change foodId to id
       await axios.delete(apiUrl);
       window.location.reload();
       console.log(apiUrl);
@@ -40,7 +40,6 @@ function EmployeeViewFood() {
         if (response.status === 200) {
           setFoods(response.data);
         } else if (response.status === 204) {
-          //HTTP 204 successfully connect with the server but no data returned
           setFoods([]);
         }
         setLoading(false);
@@ -62,13 +61,16 @@ function EmployeeViewFood() {
           <p className="error-message">{error}</p>
         ) : (
           <div className="food-grid-evf">
-            {foods.map((food) => (
-              <FoodGrid
-                key={food.foodId}
-                food={food}
-                handleDeleteClick={DeleteClick}
-              />
-            ))}
+            {foods.map((food) => {
+              console.log("Food in map:", food);
+              return (
+                <FoodGrid
+                  key={food.id}
+                  food={food}
+                  handleDeleteClick={DeleteClick}
+                />
+              );
+            })}
           </div>
         )}
       </div>

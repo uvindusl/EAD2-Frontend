@@ -1,7 +1,7 @@
 import "../css/FoodGrid.css";
 
 interface Food {
-  foodId: string;
+  id: number;
   name: string;
   description: string;
   picture: string;
@@ -9,7 +9,7 @@ interface Food {
 }
 
 interface FoodGridProps {
-  handleDeleteClick: (foodId: string) => void;
+  handleDeleteClick: (id: number) => void;
   food: Food;
 }
 
@@ -41,7 +41,7 @@ function FoodGrid({ food, handleDeleteClick }: FoodGridProps) {
           <button className="food-checkout-btn">Edit</button>
           <button
             className="food-delete-button"
-            onClick={() => handleDeleteClick(food.foodId)}
+            onClick={() => handleDeleteClick(food.id)}
           >
             Delete
           </button>
