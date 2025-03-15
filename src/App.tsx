@@ -10,6 +10,8 @@ import EmployeeViewFood from "./pages/EmployeeViewFood";
 import CheckoutPage from "./pages/CheckoutPage";
 import AddEmployeePage from "./pages/AddEmployeePage";
 import UpdateEmployee from "./components/UpdateEmployee";
+import AddFood from "./pages/AddFood";
+import UpdateFood from "./pages/UpdateFood";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="/checkout" element={<CheckoutPage />}></Route>
           <Route path="/addemployee" element={<AddEmployeePage />}></Route>
           <Route path="/updateemployee/:id" element={<UpdateEmployee />} />
+          <Route path="/addfood" element={<AddFood />} />
+          <Route path="/update-food/:id" element={<UpdateFood />} />
         </Routes>
       </main>
     </div>
