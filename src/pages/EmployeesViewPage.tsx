@@ -17,6 +17,17 @@ function EmployeesViewPage() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const DeleteClick = async (employeeId: number) => {
+    try {
+      const apiUrl = `http://localhost:8082/employee-micro/employees/${employeeId}`;
+      await axios.delete(apiUrl);
+      window.location.reload();
+    } catch (error) {
+      console.error("Error", error);
+      setError("Failed to delete");
+    }
+  };
+
   useEffect(() => {
     const apiUrl = "http://localhost:8082/employee-micro/employees";
 
@@ -57,7 +68,11 @@ function EmployeesViewPage() {
         ) : (
           <div>
             {employees.map((employee) => (
-              <EmployeeCard key={employee.id} employee={employee} />
+              <EmployeeCard
+                key={employee.id}
+                employee={employee}
+                handleDeleteClick={DeleteClick}
+              />
             ))}
           </div>
         )}
