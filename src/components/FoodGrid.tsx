@@ -1,7 +1,7 @@
 import "../css/FoodGrid.css";
 
 interface Food {
-  foodid: string;
+  foodId: string;
   name: string;
   description: string;
   picture: string;
@@ -9,10 +9,11 @@ interface Food {
 }
 
 interface FoodGridProps {
+  handleDeleteClick: (foodId: string) => void;
   food: Food;
 }
 
-function FoodGrid({ food }: FoodGridProps) {
+function FoodGrid({ food, handleDeleteClick }: FoodGridProps) {
   const imageSource = food.picture
     ? `data:image/jpeg;base64,${food.picture}`
     : "/placeholder.png";
@@ -38,7 +39,12 @@ function FoodGrid({ food }: FoodGridProps) {
         </div>
         <div className="food-actions">
           <button className="food-checkout-btn">Edit</button>
-          <button className="food-delete-button">Delete</button>
+          <button
+            className="food-delete-button"
+            onClick={() => handleDeleteClick(food.foodId)}
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>
