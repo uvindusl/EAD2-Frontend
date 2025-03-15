@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import NavBar from "../components/navBar"; // Import Navbar component
-import Footer from "../components/Footer"; // Import Footer component
-import "../css/AddFood.css"; // Import the CSS file
+import NavBar from "../components/navBar";
+import Footer from "../components/Footer";
+import "../css/AddFood.css";
 
 const AddFood: React.FC = () => {
   const [title, setTitle] = useState("");
@@ -9,26 +9,59 @@ const AddFood: React.FC = () => {
   const [price, setPrice] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
       setImage(file);
-      setPreview(URL.createObjectURL(file)); // Generate a preview
+      setPreview(URL.createObjectURL(file));
     }
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  // Handle Form Submission
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log({ title, description, price, image });
-    alert("Food item added!");
+
+    if (!image) {
+      alert("Please upload an image.");
+      return;
+    }
+
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("name", title);
+    formData.append("description", description);
+    formData.append("price", price);
+    formData.append("picture", image);
+
+    try {
+      const response = await fetch("http://localhost:8081/food-micro/foods", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        alert("Food item added successfully!");
+        setTitle("");
+        setDescription("");
+        setPrice("");
+        setImage(null);
+        setPreview(null);
+      } else {
+        alert("Failed to add food item.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred while adding the food item.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div>
-      {/* Navbar */}
       <NavBar />
-
       <div className="add-food-container">
         <div className="form-box">
           <h2 className="form-title">Add Food</h2>
@@ -65,11 +98,20 @@ const AddFood: React.FC = () => {
                   className="input-field"
                   required
                 />
+
                 <div className="button-group">
-                  <button type="submit" className="save-button">
-                    Save
+                  <button
+                    type="submit"
+                    className="save-button"
+                    disabled={loading}
+                  >
+                    {loading ? "Saving..." : "Save"}
                   </button>
-                  <button type="button" className="cancel-button">
+                  <button
+                    type="button"
+                    className="cancel-button"
+                    onClick={() => {}}
+                  >
                     Cancel
                   </button>
                 </div>
@@ -100,8 +142,6 @@ const AddFood: React.FC = () => {
           </form>
         </div>
       </div>
-
-      {/* Footer */}
       <Footer />
     </div>
   );
