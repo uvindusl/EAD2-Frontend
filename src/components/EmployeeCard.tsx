@@ -9,14 +9,15 @@ interface Employee {
 }
 
 interface EmployeeProps {
+  handleDeleteClick: (employeeId: number) => void;
   employee: Employee;
 }
 
-function EmployeeCard({ employee }: EmployeeProps) {
+function EmployeeCard({ employee, handleDeleteClick }: EmployeeProps) {
   const navigate = useNavigate();
 
   const handleEditClick = () => {
-    navigate(`/updateemployee/${employee.id}`); // Navigate to Update Page
+    navigate(`/updateemployee/${employee.id}`);
   };
 
   return (
@@ -37,7 +38,10 @@ function EmployeeCard({ employee }: EmployeeProps) {
             </button>
           </div>
           <div>
-            <button className="btnDelete">
+            <button
+              className="btnDelete"
+              onClick={() => handleDeleteClick(employee.id)}
+            >
               <div className="trash-icon"></div>
             </button>
           </div>
