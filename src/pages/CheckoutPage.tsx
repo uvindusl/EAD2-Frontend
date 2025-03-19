@@ -131,7 +131,7 @@ function CheckoutPage() {
 
         setCheckoutItems([]);
         setTotalAmount(0);
-        navigate("/order-confirmation");
+        //navigate("/order-confirmation");
       }
     } catch (error: any) {
       console.error("Payment error:", error);

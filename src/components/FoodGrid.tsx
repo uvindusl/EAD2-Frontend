@@ -40,7 +40,7 @@ function FoodGrid({ food, handleDeleteClick }: FoodGridProps) {
           />
         </div>
         <div className="food-actions">
-          <button onClick={() => navigate(`/update-food/${food.id}`)}>
+          <button onClick={() => navigate(`/admin/update/food/${food.id}`)}>
             Edit
           </button>
           <button

@@ -50,7 +50,7 @@ function UpdateEmployee() {
 
       alert("Employee Updated Successfully!");
       setError(null);
-      navigate("/empview");
+      navigate("/admin/view/employees");
     } catch (error) {
       console.error("Error updating employee:", error);
       setError("Failed to update employee.");

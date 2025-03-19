@@ -32,7 +32,7 @@ function LoginPage() {
           //HTTP 200 status is scuccessful connect with the server and send data
           const customerid = response.data;
           setCustomer(response.data);
-          navigate("/home");
+          navigate("/Home");
 
           //stroe the customer id
           sessionStorage.setItem(
@@ -75,7 +75,7 @@ function LoginPage() {
           // HTTP 201 indicates resource creation
           const newCustomer = response.data;
           setCustomer(newCustomer);
-          navigate("/"); // Redirect to a welcome or confirmation page
+          window.location.reload();
         }
       })
       .catch((error) => {

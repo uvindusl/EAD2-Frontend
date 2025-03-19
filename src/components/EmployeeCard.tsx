@@ -17,7 +17,7 @@ function EmployeeCard({ employee, handleDeleteClick }: EmployeeProps) {
   const navigate = useNavigate();
 
   const handleEditClick = () => {
-    navigate(`/updateemployee/${employee.id}`); // Navigate to Update Page
+    navigate(`/admin/update/employee/${employee.id}`); // Navigate to Update Page
   };
 
   return (
