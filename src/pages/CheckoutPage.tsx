@@ -31,7 +31,6 @@ function CheckoutPage() {
 
     const fetchCheckoutData = async () => {
       try {
-        // Fetch suborders for the customer
         const subOrdersResponse = await axios.get(
           `http://localhost:8083/order-micro/suborders/${customerId}`
         );
@@ -44,7 +43,6 @@ function CheckoutPage() {
           return;
         }
 
-        // Fetch food details for each suborder
         const foodDetailsPromises = subOrders.map((order: { foodId: any }) =>
           axios.get(`http://localhost:8081/food-micro/foods/${order.foodId}`)
         );
@@ -64,14 +62,15 @@ function CheckoutPage() {
                 picture: food.picture,
               };
             } else {
-              // Handle the case where food details are not found for a suborder
               console.warn(
                 `Food details not found for foodId: ${order.foodId}`
               );
-              return null; // Or handle it in another way (e.g., skip this item)
+              return null;
             }
           })
-          .filter((item: null) => item !== null) as CheckoutItem[]; // Filter out null values
+          .filter(
+            (item: CheckoutItem | null) => item !== null
+          ) as CheckoutItem[]; // Filter out null values
 
         setCheckoutItems(checkoutData);
 
@@ -104,32 +103,32 @@ function CheckoutPage() {
     }
 
     try {
-      // Calculate total order price from checkoutItems
       const orderTotalPrice = checkoutItems.reduce(
         (sum: number, item: CheckoutItem) => sum + item.price * item.quantity,
         0
       );
 
-      // Ensure order total is updated correctly
       const orderData = {
-        customerId: customerId,
-        total: orderTotalPrice, // Use calculated total price here
+        orderTotalPrice: orderTotalPrice,
+        orderCustomerId: customerId,
       };
+
+      console.log("Sending order data:", orderData);
 
       const response = await axios.post(
         "http://localhost:8083/order-micro/orders",
         orderData
       );
 
+      console.log("Order POST response:", response);
+
       if (response.status === 200 || response.status === 201) {
-        // Order placed successfully, now delete suborders
         await axios.delete(
           `http://localhost:8083/order-micro/suborders/remove/${customerId}`
         );
 
         alert("Payment successful! Order placed and cart cleared.");
 
-        // Clear state and redirect
         setCheckoutItems([]);
         setTotalAmount(0);
         navigate("/order-confirmation");

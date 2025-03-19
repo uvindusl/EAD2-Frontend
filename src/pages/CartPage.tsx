@@ -47,7 +47,6 @@ function CartPage() {
           setCart(cartResponse.data);
           fetchFoodDetails(cartResponse.data);
         } else if (cartResponse.status === 204) {
-          // No content, cart is empty
           setCart([]);
           setFood([]);
         } else {
@@ -56,7 +55,6 @@ function CartPage() {
       } catch (error: any) {
         console.error("Error fetching cart data:", error);
         if (error.response && error.response.status === 404) {
-          // Handle case where the cart for the customer doesn't exist
           setCart([]);
           setFood([]);
         } else {
@@ -115,15 +113,13 @@ function CartPage() {
 
       await Promise.all(checkoutRequests);
 
-      // Delete all cart items
       await axios.delete(
         `http://localhost:8083/order-micro/carts/byCustomerId/${customerid}`
       );
 
-      setCart([]); // Clear cart state
+      setCart([]);
       alert("Order placed successfully! Redirecting to checkout...");
 
-      // Redirect to Checkout page
       navigate("/checkout");
     } catch (error: any) {
       console.error("Checkout error:", error);
@@ -182,7 +178,7 @@ function CartPage() {
                     handleSingleDelete={(cartId) => {
                       setCart(cart.filter((item) => item.cartId !== cartId));
                     }}
-                    handleCheckout={handleCheckout} // Pass handleCheckout as a prop
+                    handleCheckout={handleCheckout}
                   />
                 );
               })}

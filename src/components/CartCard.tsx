@@ -14,7 +14,7 @@ interface Cart {
 interface CartCardProps {
   handleSingleDelete: (cartId: number) => void;
   cart: Cart;
-  handleCheckout: () => void; // Add the checkout handler as a prop
+  handleCheckout: () => void;
 }
 
 function CartCard({ cart, handleSingleDelete, handleCheckout }: CartCardProps) {

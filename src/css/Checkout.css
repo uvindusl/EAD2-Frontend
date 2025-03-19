@@ -1,74 +1,38 @@
-/* General Page Styling */
-body {
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
-  margin: 0;
-  padding: 0;
-}
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 15px;
 }
 
-/* Checkout Container */
 .checkout-container {
-  background: #fff;
-  max-width: 900px;
-  margin: 20px auto 50px;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 5px;
 }
 
-.checkout-container h2 {
-  color: #333;
-  margin-bottom: 25px;
-  text-align: center;
-  font-size: 28px;
-  border-bottom: 2px solid #f0f0f0;
-  padding-bottom: 15px;
-}
-
-.checkout-container h3 {
-  font-size: 24px;
-  margin: 25px 0;
-  text-align: right;
-  color: #333;
-}
-
-/* Checkout Items List */
 .checkout-items {
   list-style-type: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 20px 0;
 }
 
-/* Individual Checkout Item */
 .checkout-item {
   display: flex;
-  align-items: center;
-  background: #fff;
+  background-color: white;
+  margin-bottom: 10px;
   padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  border: 1px solid #eee;
-  transition: transform 0.2s ease;
-}
-
-.checkout-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .checkout-item-img {
   width: 80px;
   height: 80px;
-  border-radius: 8px;
   object-fit: cover;
-  margin-right: 20px;
+  border-radius: 4px;
+  margin-right: 15px;
 }
 
 .checkout-item-details {
@@ -76,73 +40,111 @@ body {
 }
 
 .checkout-item-details h4 {
-  margin: 0 0 10px;
-  font-size: 18px;
+  margin: 0 0 5px 0;
+  font-size: 16px;
+  font-weight: bold;
   color: #333;
 }
 
 .checkout-item-details p {
-  margin: 5px 0;
-  font-size: 14px;
+  margin: 3px 0;
   color: #666;
 }
 
-/* Proceed Button */
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+h3 {
+  font-size: 18px;
+  margin-top: 10px;
+  text-align: right;
+  padding-right: 15px;
+}
+
 .proceed-btn {
-  display: block;
-  width: 100%;
-  max-width: 300px;
-  padding: 15px;
-  border: none;
-  cursor: pointer;
-  background: #4caf50;
+  background-color: #3498db;
   color: white;
+  border: none;
+  padding: 10px 20px;
   border-radius: 5px;
+  cursor: pointer;
   font-size: 16px;
-  font-weight: bold;
-  margin: 20px 0 0 auto;
-  transition: background-color 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  align-self: flex-end;
+  margin-top: 10px;
+  transition: background-color 0.2s;
 }
 
 .proceed-btn:hover {
-  background: #45a049;
+  background-color: #2980b9;
 }
 
-/* Loading and Error States */
-.container p {
-  text-align: center;
-  font-size: 18px;
-  margin: 30px 0;
-  color: #666;
+/* Quantity display styling */
+.checkout-item-details p:last-child {
+  text-align: right;
+  margin-top: 10px;
 }
 
-/* Empty Cart Message */
-.container p:last-child {
-  padding: 30px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Additional styles for the right panel with total */
+.checkout-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+.checkout-summary h3 {
+  margin: 0;
+  text-align: left;
+}
+
+/* Media query for responsive design */
+@media (min-width: 768px) {
   .checkout-container {
-    padding: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
-  .checkout-item {
+  .checkout-items {
+    flex: 0 0 65%;
+    margin-right: 20px;
+  }
+
+  .checkout-summary {
+    flex: 0 0 30%;
     flex-direction: column;
-    text-align: center;
+    align-items: stretch;
   }
 
-  .checkout-item-img {
-    margin-right: 0;
+  .checkout-summary h3 {
     margin-bottom: 15px;
   }
+}
 
-  .proceed-btn {
-    margin: 20px auto 0;
+/* For the two-column layout as shown in your image */
+@media (min-width: 992px) {
+  .checkout-container {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    gap: 20px;
+  }
+
+  .checkout-items {
+    margin-right: 0;
+  }
+
+  .checkout-summary {
+    margin-top: 0;
+    height: fit-content;
+  }
+
+  h3 {
+    text-align: left;
   }
 }
