@@ -1,7 +1,3 @@
-/* LoginPage.css */
-.login-container1 {
-}
-
 /* Optional: Add an overlay to improve form readability */
 .login-container::before {
   content: "";

@@ -54,44 +54,48 @@ const UpdateFood: React.FC = () => {
   return (
     <div>
       <NavBar />
-      <div className="update-food-container">
+      <div className="page-wrapper">
         <h2>Update Food</h2>
-        <form onSubmit={handleUpdate}>
-          <label>Title:</label>
-          <input
-            type="text"
-            value={food.name}
-            onChange={(e) => setFood({ ...food, name: e.target.value })}
-            required
-          />
+        <div className="update-food-container">
+          <form className="form-content" onSubmit={handleUpdate}>
+            <label>Title:</label>
+            <input
+              type="text"
+              value={food.name}
+              onChange={(e) => setFood({ ...food, name: e.target.value })}
+              required
+            />
 
-          <label>Description:</label>
-          <textarea
-            value={food.description}
-            onChange={(e) => setFood({ ...food, description: e.target.value })}
-            required
-          ></textarea>
+            <label>Description:</label>
+            <textarea
+              value={food.description}
+              onChange={(e) =>
+                setFood({ ...food, description: e.target.value })
+              }
+              required
+            ></textarea>
 
-          <label>Price:</label>
-          <input
-            type="number"
-            value={food.price}
-            onChange={(e) => setFood({ ...food, price: e.target.value })}
-            required
-          />
+            <label>Price:</label>
+            <input
+              type="number"
+              value={food.price}
+              onChange={(e) => setFood({ ...food, price: e.target.value })}
+              required
+            />
 
-          <label>Image:</label>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => setImage(e.target.files![0])}
-          />
-          {preview && (
-            <img src={preview} alt="Preview" className="image-preview" />
-          )}
+            <label>Image:</label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setImage(e.target.files![0])}
+            />
+            {preview && (
+              <img src={preview} alt="Preview" className="image-preview" />
+            )}
 
-          <button type="submit">Update</button>
-        </form>
+            <button type="submit">Update</button>
+          </form>
+        </div>
       </div>
       <Footer />
     </div>

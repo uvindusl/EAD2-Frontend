@@ -1,14 +1,38 @@
 /* Page background */
 .add-food-container {
+  --input-focus: #ff8c00; /* Changed to Dark Orange */
+  --font-color: #333;
+  --font-color-sub: #666;
+  --bg-color: #fff;
+  --bg-color-alt: #666;
+  --main-color: #ff5722; /* Changed to Deep Orange */
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 80vh;
-  background-color: #dedcd0;
-  padding: 10px;
 }
 
-/* Form Box */
+.form-content1 {
+  padding-left: 50px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background: #fff3e0; /* Changed to Light Orange */
+  gap: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  align-self: center;
+  margin-top: 300px;
+}
+input::placeholder {
+  color: var(--font-color-sub);
+  opacity: 0.8;
+}
+
+/* Form Box
 .form-box {
   background-color: #fefbf7;
   padding: 20px;
@@ -16,18 +40,23 @@
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   width: 600px;
   text-align: left;
-}
+} */
 
-/* Title */
+/* Title
 .form-title {
   font-size: 1.5rem;
   margin-bottom: 10px;
   color: #4c3407;
   text-align: left;
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
   font-weight: bold;
+} */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url("../assets/background_imresizer.jpg"); /* Replace with your image path */
 }
-
 /* Form layout */
 .form-content {
   display: flex;
@@ -48,7 +77,6 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  
 }
 
 /* Labels */
@@ -62,17 +90,17 @@
 /* Input Fields */
 .input-field,
 .textarea-field {
-  width: 95%;
   padding: 8px;
   margin-bottom: 10px;
   border: 1px solid #c97e3b;
   border-radius: 4px;
   outline: none;
-  background-color: #fed48c;
+  background-color: #ffffff;
 }
 
 .textarea-field {
-  height: 60px;
+  height: 100px;
+  width: 500px;
   resize: none;
 }
 
@@ -111,7 +139,6 @@
   display: flex;
   margin-top: 10px;
   justify-content: left;
-  
 }
 
 .save-button {
