@@ -1,11 +1,11 @@
 import AddEmployee from "../components/AddEmployee";
+import EmployeeNavBar from "../components/EmployeeNavBar";
 import Footer from "../components/Footer";
-import NavBar from "../components/navBar";
 
 function AddEmployeePage() {
   return (
     <>
-      <NavBar />
+      <EmployeeNavBar />
       <AddEmployee />
       <Footer />
     </>

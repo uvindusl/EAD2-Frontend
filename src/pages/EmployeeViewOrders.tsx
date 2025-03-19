@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import NavBar from "../components/navBar";
 import Footer from "../components/Footer";
 import "../css/EmployeeViewOrders.css";
+import EmployeeNavBar from "../components/EmployeeNavBar";
 
 interface Order {
   orderId: number;
@@ -35,7 +35,7 @@ function EmployeeViewOrders() {
 
   return (
     <>
-      <NavBar />
+      <EmployeeNavBar />
       <div className="orders-page">
         {loading ? (
           <p>Loading orders...</p>

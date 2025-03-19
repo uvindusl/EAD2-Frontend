@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import NavBar from "../components/navBar";
 import Footer from "../components/Footer";
 import "../css/AddFood.css";
+import EmployeeNavBar from "../components/EmployeeNavBar";
 
 const AddFood: React.FC = () => {
   const [title, setTitle] = useState("");
@@ -61,7 +61,7 @@ const AddFood: React.FC = () => {
 
   return (
     <div>
-      <NavBar />
+      <EmployeeNavBar />
       <div className="add-food-container">
         <div className="form-box">
           <h2 className="form-title">Add Food</h2>

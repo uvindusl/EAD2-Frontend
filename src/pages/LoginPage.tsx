@@ -96,7 +96,7 @@ function LoginPage() {
   };
   return (
     <div className="page-wrapper">
-      <NavBar />
+      {/* <NavBar /> */}
       <div className="content-area">
         <div className="login-container">
           <LoginForm
