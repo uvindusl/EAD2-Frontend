@@ -33,7 +33,7 @@ function PizzaCard({ food }: PizzaCardProps) {
           </div>
           <div className="heading">
             {food.name}
-            <div className="author">${food.price}</div>
+            <div className="author">RS.{food.price}</div>
           </div>
         </Link>
       </div>

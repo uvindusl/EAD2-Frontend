@@ -29,6 +29,13 @@ body {
   margin-right: 30px;
 }
 
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
 .product-details {
   flex-grow: 1;
   display: flex;
@@ -114,15 +121,36 @@ button:hover {
   background-color: #ff7000;
 }
 
+/* Updated success popup to appear lower in the top corner */
 .success-popup {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #4caf50; /* Green background */
+  top: 80px;
+  right: 20px;
+  background-color: #4caf50;
   color: white;
-  padding: 20px;
+  padding: 15px 25px;
   border-radius: 5px;
   z-index: 1000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s, fadeOut 0.5s 2.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

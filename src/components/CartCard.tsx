@@ -14,9 +14,10 @@ interface Cart {
 interface CartCardProps {
   handleSingleDelete: (cartId: number) => void;
   cart: Cart;
+  handleCheckout: () => void;
 }
 
-function CartCard({ cart, handleSingleDelete }: CartCardProps) {
+function CartCard({ cart, handleSingleDelete, handleCheckout }: CartCardProps) {
   const imageSource = cart.foodimg
     ? `data:image/jpeg;base64,${cart.foodimg}`
     : "/placeholder.png";
@@ -50,7 +51,10 @@ function CartCard({ cart, handleSingleDelete }: CartCardProps) {
           >
             <img src="../src/assets/delete.svg" alt="Delete" />
           </button>
-          <button className="checkout-btn">Checkout</button>
+          <button className="checkout-btn" onClick={handleCheckout}>
+            {" "}
+            Checkout
+          </button>
         </div>
       </div>
     </div>

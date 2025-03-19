@@ -1,4 +1,5 @@
 import "../css/FoodGrid.css";
+import { useNavigate } from "react-router-dom";
 
 interface Food {
   id: number;
@@ -18,6 +19,7 @@ function FoodGrid({ food, handleDeleteClick }: FoodGridProps) {
     ? `data:image/jpeg;base64,${food.picture}`
     : "/placeholder.png";
 
+  const navigate = useNavigate();
   return (
     <div className="food-card">
       <div className="food-content">
@@ -38,7 +40,9 @@ function FoodGrid({ food, handleDeleteClick }: FoodGridProps) {
           />
         </div>
         <div className="food-actions">
-          <button className="food-checkout-btn">Edit</button>
+          <button onClick={() => navigate(`/admin/update/food/${food.id}`)}>
+            Edit
+          </button>
           <button
             className="food-delete-button"
             onClick={() => handleDeleteClick(food.id)}

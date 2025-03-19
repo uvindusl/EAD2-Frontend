@@ -1,0 +1,158 @@
+/* Page background */
+.add-food-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background-color: #dedcd0;
+  padding: 10px;
+}
+
+/* Form Box */
+.form-box {
+  background-color: #fefbf7;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 600px;
+  text-align: left;
+}
+
+/* Title */
+.form-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #4c3407;
+  text-align: left;
+  font-family: 'Pacifico', cursive;
+  font-weight: bold;
+}
+
+/* Form layout */
+.form-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Left section */
+.form-left {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+/* Right section */
+.form-right {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  
+}
+
+/* Labels */
+.input-label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Input Fields */
+.input-field,
+.textarea-field {
+  width: 95%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #c97e3b;
+  border-radius: 4px;
+  outline: none;
+  background-color: #fed48c;
+}
+
+.textarea-field {
+  height: 60px;
+  resize: none;
+}
+
+/* Image Box */
+.image-box {
+  width: 220px;
+  height: 210px;
+  border: 2px dashed #c97e3b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  margin-bottom: 10px;
+}
+
+.image-placeholder {
+  color: #888;
+  font-size: 12px;
+  text-align: center;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* File Input */
+.file-input {
+  font-size: 13px;
+  color: #333;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  margin-top: 10px;
+  justify-content: left;
+  
+}
+
+.save-button {
+  background-color: #ff9a02;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 50px;
+  width: 80px;
+  height: 50px;
+}
+
+.cancel-button {
+  background-color: #ff0202;
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 80px;
+  width: 80px;
+  height: 50px;
+}
+
+.save-button:hover {
+  background-color: #a65f2d;
+}
+
+.cancel-button:hover {
+  background-color: #ddd;
+}
+
+.image-box-button {
+  background-color: #ffffff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  height: 50px;
+}
