@@ -1,29 +1,24 @@
-/* Main navbar styling */
 .navbar {
-  background-color: #ff8c00 !important; /* Orange background */
+  background-color: #ff8c00 !important;
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Brand/logo styling */
 .navbar-brand {
   font-weight: bold;
   font-size: 1.8rem;
   color: white !important;
 }
 
-/* Center the navbar items */
 .navbar-collapse {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .navbar-nav {
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 850px;
 }
 
-/* Nav items styling */
 .nav-item {
   margin: 0 15px;
   text-align: center;
@@ -41,18 +36,22 @@
   color: #fff5e1 !important;
 }
 
-/* Responsive adjustments */
 @media (max-width: 992px) {
   .navbar-collapse {
-    text-align: center;
+    width: 100%;
+  }
+
+  .navbar-nav {
+    width: 100%;
   }
 
   .nav-item {
     margin: 5px 0;
+    text-align: right;
+    padding-right: 15px;
   }
 }
 
-/* Fix for the toggle button positioning */
 .navbar-toggler {
   border-color: white;
 }

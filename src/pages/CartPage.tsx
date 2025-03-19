@@ -118,7 +118,6 @@ function CartPage() {
       );
 
       setCart([]);
-      alert("Order placed successfully! Redirecting to checkout...");
 
       navigate("/checkout");
     } catch (error: any) {
@@ -178,7 +177,6 @@ function CartPage() {
                     handleSingleDelete={(cartId) => {
                       setCart(cart.filter((item) => item.cartId !== cartId));
                     }}
-                    handleCheckout={handleCheckout}
                   />
                 );
               })}

@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "../css/navBar.css";
 
 function NavBar() {
@@ -20,29 +21,30 @@ function NavBar() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-        </div>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/Home">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link active"
-                aria-current="page"
-                href="/checkout"
-              >
-                Order
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/cart">
-                Cart
-              </a>
-            </li>
-          </ul>
+
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="/Home">
+                  Home
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link active"
+                  aria-current="page"
+                  href="/checkout"
+                >
+                  Order
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="/cart">
+                  Cart
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </>
