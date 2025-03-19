@@ -14,6 +14,7 @@ import AddFood from "./pages/AddFood";
 import UpdateFood from "./pages/UpdateFood";
 import EmployeeDashboard from "./pages/EmployeeDashboard";
 import PaymentPage from "./pages/PaymentPage";
+import EmployeeViewOrders from "./pages/EmployeeViewOrders";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
           <Route path="/admin/update/food/:id" element={<UpdateFood />} />
           <Route path="/admin/dashboard" element={<EmployeeDashboard />} />
           <Route path="/Payment" element={<PaymentPage />} />
+          <Route path="/admin/view/orders" element={<EmployeeViewOrders />} />
         </Routes>
       </main>
     </div>
