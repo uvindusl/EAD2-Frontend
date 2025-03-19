@@ -6,10 +6,9 @@ import SearchBar from "../components/SearchBar";
 import "../css/HomePage.css";
 import axios from "axios";
 
-// Define the Food interface
 interface Food {
   id: number;
-  picture: string; // Base64 string for the image
+  picture: string;
   name: string;
   price: number;
 }
@@ -19,20 +18,20 @@ function HomePage() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  // const customerid = sessionStorage.getItem("customerId");
-  // console.log("Customer ID: ", customerid);
-
   useEffect(() => {
-    const apiUrl = "http://localhost:8081/food-micro/foods";
+    fetchFoods();
+  }, []);
 
+  const fetchFoods = (query: string = "") => {
     setLoading(true);
+    const apiUrl = `http://localhost:8081/food-micro/foods/search?name=${query}`;
+
     axios
       .get(apiUrl)
       .then((response) => {
         if (response.status === 200) {
           setFoods(response.data);
         } else if (response.status === 204) {
-          //HTTP 204 successfully connect with the server but no data returned
           setFoods([]);
         }
         setLoading(false);
@@ -42,7 +41,11 @@ function HomePage() {
         setError("Failed to load food items. Please try again later.");
         setLoading(false);
       });
-  }, []);
+  };
+
+  const handleSearch = (query: string) => {
+    fetchFoods(query);
+  };
 
   return (
     <div className="home">
@@ -50,7 +53,7 @@ function HomePage() {
       <div className="home-container">
         <h1 className="home-title">Our Pizza Menu</h1>
         <div className="search-wrapper">
-          <SearchBar />
+          <SearchBar onSearch={handleSearch} />
         </div>
         {loading ? (
           <p className="loading-message">Loading menu items...</p>

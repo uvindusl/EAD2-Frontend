@@ -118,7 +118,6 @@ function CartPage() {
       );
 
       setCart([]);
-      alert("Order placed successfully! Redirecting to checkout...");
 
       navigate("/checkout");
     } catch (error: any) {

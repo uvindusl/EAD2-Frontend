@@ -70,7 +70,7 @@ function CheckoutPage() {
           })
           .filter(
             (item: CheckoutItem | null) => item !== null
-          ) as CheckoutItem[]; // Filter out null values
+          ) as CheckoutItem[];
 
         setCheckoutItems(checkoutData);
 
@@ -127,7 +127,7 @@ function CheckoutPage() {
           `http://localhost:8083/order-micro/suborders/remove/${customerId}`
         );
 
-        alert("Payment successful! Order placed and cart cleared.");
+        alert("Order placed Successfully.");
 
         setCheckoutItems([]);
         setTotalAmount(0);
@@ -179,7 +179,7 @@ function CheckoutPage() {
             </button>
           </div>
         ) : (
-          <p>No items in checkout</p>
+          <p>No Orders</p>
         )}
       </div>
       <Footer />

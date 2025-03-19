@@ -94,7 +94,6 @@ function FoodPurchasePanel({ food }: FoodPurchasePanelProps) {
           </div>
 
           <div className="product-actions">
-            <button className="action-button buy-now">Buy Now</button>
             <button
               className="action-button add-to-cart"
               onClick={handleaddtocart}
