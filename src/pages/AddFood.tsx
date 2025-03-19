@@ -87,7 +87,7 @@ const AddFood: React.FC = () => {
 
                 <label className="input-label">Price</label>
                 <input
-                  type="text"
+                  type="number"
                   value={price}
                   onChange={(e) => {
                     const value = e.target.value;

@@ -83,7 +83,7 @@ function UpdateEmployee() {
 
         <label>Employee Telephone Number</label>
         <input
-          type="text"
+          type="number"
           name="telephone"
           value={employee.telephone}
           onChange={handleChange}
