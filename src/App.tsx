@@ -12,6 +12,7 @@ import AddEmployeePage from "./pages/AddEmployeePage";
 import UpdateEmployee from "./components/UpdateEmployee";
 import AddFood from "./pages/AddFood";
 import UpdateFood from "./pages/UpdateFood";
+import PaymentPage from "./pages/PaymentPage";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           />
           <Route path="/admin/add/food" element={<AddFood />} />
           <Route path="/admin/update/food/:id" element={<UpdateFood />} />
+          <Route path="/payment" element={<PaymentPage />} />
         </Routes>
       </main>
     </div>
