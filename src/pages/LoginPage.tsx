@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import LoginForm from "../components/LoginForm";
-import NavBar from "../components/navBar";
 import "../css/LoginPage.css";
 import axios from "axios";
 import CustomerLoginHeader from "../components/CustomerLoginHeader";
