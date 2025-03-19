@@ -62,7 +62,7 @@ function UpdateEmployee() {
       <h2>Update Employee</h2>
       {error && <p className="error-message">{error}</p>}
 
-      <form onSubmit={handleSubmit}>
+      <form className="form-content" onSubmit={handleSubmit}>
         <label>Employee Name</label>
         <input
           type="text"

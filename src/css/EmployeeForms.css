@@ -6,24 +6,31 @@ body {
 }
 
 .form-container {
-  width: 400px;
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: 50px auto;
-  text-align: center;
-}
-
-h2 {
-  font-size: 20px;
-  margin-bottom: 15px;
-  font-weight: bold;
-}
-
-form {
+  --input-focus: #ff8c00; /* Changed to Dark Orange */
+  --font-color: #333;
+  --font-color-sub: #666;
+  --bg-color: #fff;
+  --bg-color-alt: #666;
+  --main-color: #ff5722; /* Changed to Deep Orange */
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.form-content {
+  padding: 20px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background: #fff3e0; /* Changed to Light Orange */
+  gap: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  align-self: center;
 }
 
 label {
@@ -34,26 +41,39 @@ label {
 }
 
 input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
+  width: 500px;
+  height: 40px;
   border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--font-color);
+  padding: 5px 10px;
+  outline: none;
+}
+
+input::placeholder {
+  color: var(--font-color-sub);
+  opacity: 0.8;
+}
+
+input:focus {
+  border: 2px solid var(--input-focus);
 }
 
 .submit-btn {
-  width: 200px;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  background: #3498db;
-  color: white;
+  margin: 20px 0 20px 0;
+  width: 250px;
+  height: 40px;
   border-radius: 5px;
-  font-size: 14px;
-  margin-top: 15px;
-  margin-left: 160px;
-}
-
-.submit-btn:hover {
-  background: #2980b9;
+  border: 2px solid var(--main-color);
+  background-color: #ffab91; /* Changed to Light Orange */
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  align-self: center;
 }
