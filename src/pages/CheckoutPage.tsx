@@ -131,7 +131,7 @@ function CheckoutPage() {
 
         setCheckoutItems([]);
         setTotalAmount(0);
-        //navigate("/order-confirmation");
+        navigate("/Payment", { state: { totalAmount: orderTotalPrice } });
       }
     } catch (error: any) {
       console.error("Payment error:", error);
