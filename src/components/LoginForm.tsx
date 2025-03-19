@@ -52,6 +52,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
                     name="username"
                     placeholder="User Name"
                     type="text"
+                    required
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     disabled={loading}
@@ -60,7 +61,8 @@ const LoginForm: React.FC<LoginFormProps> = ({
                     className="flip-card__input"
                     name="tel"
                     placeholder="Phone Number"
-                    type="tel"
+                    type="number"
+                    required
                     value={tel}
                     onChange={(e) => setTel(e.target.value)}
                     disabled={loading}
@@ -82,6 +84,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
                     className="flip-card__input"
                     placeholder="Name"
                     type="text"
+                    required
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     disabled={loading}
@@ -91,6 +94,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
                     name="text"
                     placeholder="Address"
                     type="text"
+                    required
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     disabled={loading}
@@ -99,7 +103,8 @@ const LoginForm: React.FC<LoginFormProps> = ({
                     className="flip-card__input"
                     name="password"
                     placeholder="Phone Number"
-                    type="tel"
+                    type="number"
+                    required
                     value={tel}
                     onChange={(e) => setTel(e.target.value)}
                     disabled={loading}
