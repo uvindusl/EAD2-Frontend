@@ -9,7 +9,7 @@ import EmployeesViewPage from "./pages/EmployeesViewPage";
 import EmployeeViewFood from "./pages/EmployeeViewFood";
 import CheckoutPage from "./pages/CheckoutPage";
 import AddEmployeePage from "./pages/AddEmployeePage";
-import UpdateEmployee from "./components/UpdateEmployee";
+import UpdateEmployeePage from "./pages/UpdateEmployeePage";
 import AddFood from "./pages/AddFood";
 import UpdateFood from "./pages/UpdateFood";
 import EmployeeDashboard from "./pages/EmployeeDashboard";
@@ -41,7 +41,7 @@ function App() {
           ></Route>
           <Route
             path="/employee/update/employee/:id"
-            element={<UpdateEmployee />}
+            element={<UpdateEmployeePage />}
           />
           <Route path="/employee/add/food" element={<AddFood />} />
           <Route path="/employee/update/food/:id" element={<UpdateFood />} />
