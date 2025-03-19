@@ -24,7 +24,7 @@ const EmployeeDashboard: React.FC = () => {
     },
     {
       title: "Manage Employees",
-      description: "Update and Delete Foods",
+      description: "Update and Delete Employees",
       icon: "👨‍🍳",
       route: "/admin/view/employees",
     },
@@ -49,7 +49,7 @@ const EmployeeDashboard: React.FC = () => {
           <h2 className="text-xl font-semibold mb-4">Employee Dashboard</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {filteredTiles.map((tile, index) => (
             <div
               key={index}
