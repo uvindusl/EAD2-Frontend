@@ -25,27 +25,27 @@ function App() {
           <Route path="/Home" element={<HomePage />}></Route>
           <Route path="/food/:id" element={<FoodPage />}></Route>
           <Route path="/cart" element={<CartPage />}></Route>
-          <Route path="/admin" element={<EmployeeLoginPage />}></Route>
+          <Route path="/employee" element={<EmployeeLoginPage />}></Route>
           <Route
-            path="/admin/view/employees"
+            path="/employee/view/employees"
             element={<EmployeesViewPage />}
           ></Route>
           <Route
-            path="/admin/view/foods"
+            path="/employee/view/foods"
             element={<EmployeeViewFood />}
           ></Route>
           <Route path="/checkout" element={<CheckoutPage />}></Route>
           <Route
-            path="/admin/add/employee"
+            path="/employee/add/employee"
             element={<AddEmployeePage />}
           ></Route>
           <Route
-            path="/admin/update/employee/:id"
+            path="/employee/update/employee/:id"
             element={<UpdateEmployee />}
           />
-          <Route path="/admin/add/food" element={<AddFood />} />
-          <Route path="/admin/update/food/:id" element={<UpdateFood />} />
-          <Route path="/admin/dashboard" element={<EmployeeDashboard />} />
+          <Route path="/employee/add/food" element={<AddFood />} />
+          <Route path="/employee/update/food/:id" element={<UpdateFood />} />
+          <Route path="/employee/dashboard" element={<EmployeeDashboard />} />
           <Route path="/Payment" element={<PaymentPage />} />
           <Route path="/admin/view/orders" element={<EmployeeViewOrders />} />
         </Routes>

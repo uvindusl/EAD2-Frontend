@@ -20,13 +20,13 @@ const EmployeeDashboard: React.FC = () => {
       title: "Manage Foods",
       description: "Update and Delete Foods",
       icon: "🍕",
-      route: "/admin/view/foods",
+      route: "/employee/view/foods",
     },
     {
       title: "Manage Employees",
       description: "Update and Delete Employees",
       icon: "👨‍🍳",
-      route: "/admin/view/employees",
+      route: "/employee/view/employees",
     },
   ];
 
