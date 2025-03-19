@@ -19,8 +19,8 @@ function HomePage() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const customerid = sessionStorage.getItem("customerId");
-  console.log("Customer ID: ", customerid);
+  // const customerid = sessionStorage.getItem("customerId");
+  // console.log("Customer ID: ", customerid);
 
   useEffect(() => {
     const apiUrl = "http://localhost:8081/food-micro/foods";
