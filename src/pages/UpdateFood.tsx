@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import NavBar from "../components/navBar";
 import Footer from "../components/Footer";
 import axios from "axios";
+import "../css/UpdateFood.css";
 
 const UpdateFood: React.FC = () => {
   const { id } = useParams<{ id: string }>();
