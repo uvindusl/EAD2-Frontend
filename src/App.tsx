@@ -47,7 +47,10 @@ function App() {
           <Route path="/employee/update/food/:id" element={<UpdateFood />} />
           <Route path="/employee/dashboard" element={<EmployeeDashboard />} />
           <Route path="/Payment" element={<PaymentPage />} />
-          <Route path="/admin/view/orders" element={<EmployeeViewOrders />} />
+          <Route
+            path="/employee/view/orders"
+            element={<EmployeeViewOrders />}
+          />
         </Routes>
       </main>
     </div>

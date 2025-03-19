@@ -28,6 +28,12 @@ const EmployeeDashboard: React.FC = () => {
       icon: "👨‍🍳",
       route: "/employee/view/employees",
     },
+    {
+      title: "View Orders",
+      description: "",
+      icon: "📦",
+      route: "/employee/view/orders",
+    },
   ];
 
   const filteredTiles = dashboardTiles.filter(

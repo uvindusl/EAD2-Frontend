@@ -33,7 +33,7 @@ function EmployeeLoginPage() {
           //HTTP 200 status is scuccessful connect with the server and send data
           const employeeid = response.data;
           setemployee(response.data);
-          navigate("/home");
+          navigate("/employee/dashboard");
 
           //stroe the employee id
           sessionStorage.setItem(
