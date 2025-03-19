@@ -1,9 +1,9 @@
 import EmployeeCard from "../components/EmployeeCard";
 import "../css/EmployeeViewPage.css";
-import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import EmployeeNavBar from "../components/EmployeeNavBar";
+import Footer from "../components/Footer";
 
 interface employee {
   id: number;
