@@ -70,6 +70,7 @@ function UpdateEmployee() {
           value={employee.name}
           onChange={handleChange}
           required
+          pattern="[A-Za-z]*"
         />
 
         <label>Employee Address</label>
@@ -83,7 +84,7 @@ function UpdateEmployee() {
 
         <label>Employee Telephone Number</label>
         <input
-          type="text"
+          type="number"
           name="telephone"
           value={employee.telephone}
           onChange={handleChange}
