@@ -1,6 +1,10 @@
 import "../css/PaymentCard.css";
 
-function PaymentCard() {
+interface PaymentCardProps {
+  totalAmount: number;
+}
+
+function PaymentCard({ totalAmount }: PaymentCardProps) {
   return (
     <div>
       <div className="card">
@@ -33,12 +37,12 @@ function PaymentCard() {
             <img
               className="img-container cash"
               src="../src/assets/Cash.jpg"
-              alt="cash on deleivery"
+              alt="cash on delivery"
             />
           </div>
         </div>
         <div className="price">
-          <h1>Total:.RS</h1>
+          <h1>Total: Rs. {totalAmount}</h1>
         </div>
         <div className="text">
           <p>*Card payments may charge additional bank charges.</p>

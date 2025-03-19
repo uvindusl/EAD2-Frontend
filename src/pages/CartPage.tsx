@@ -177,7 +177,6 @@ function CartPage() {
                     handleSingleDelete={(cartId) => {
                       setCart(cart.filter((item) => item.cartId !== cartId));
                     }}
-                    handleCheckout={handleCheckout}
                   />
                 );
               })}
