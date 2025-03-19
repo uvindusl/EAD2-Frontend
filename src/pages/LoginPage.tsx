@@ -5,6 +5,7 @@ import LoginForm from "../components/LoginForm";
 import NavBar from "../components/navBar";
 import "../css/LoginPage.css";
 import axios from "axios";
+import CustomerLoginHeader from "../components/CustomerLoginHeader";
 
 interface Customer {
   customerId: number;
@@ -96,7 +97,7 @@ function LoginPage() {
   };
   return (
     <div className="page-wrapper">
-      {/* <NavBar /> */}
+      <CustomerLoginHeader />
       <div className="content-area">
         <div className="login-container">
           <LoginForm

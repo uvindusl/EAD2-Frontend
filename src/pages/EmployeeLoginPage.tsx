@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import NavBar from "../components/navBar";
 import "../css/LoginPage.css";
 import axios from "axios";
+import CustomerLoginHeader from "../components/CustomerLoginHeader";
 
 interface employee {
   employeeId: number;
@@ -61,7 +62,7 @@ function EmployeeLoginPage() {
 
   return (
     <div className="page-wrapper">
-      {/* <NavBar /> */}
+      <CustomerLoginHeader />
       <div className="content-area">
         <div className="login-container">
           <EmployeeLoginForm
