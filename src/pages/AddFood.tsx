@@ -75,6 +75,7 @@ const AddFood: React.FC = () => {
                   onChange={(e) => setTitle(e.target.value)}
                   className="input-field"
                   required
+                  pattern="[A-Za-z]*"
                 />
 
                 <label className="input-label">Description</label>
