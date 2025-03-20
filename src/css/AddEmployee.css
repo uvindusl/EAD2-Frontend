@@ -10,20 +10,19 @@
   z-index: -1;
 }
 
-.page-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-image: url("../assets/background_imresizer.jpg"); /* Replace with your image path */
-}
-
 .content-area {
   flex: 1;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
+  background-image: url("../assets/background_imresizer.jpg");
 }
 
 h2 {
-  font-size: 20px;
-  margin-bottom: 15px;
-  font-weight: bold;
+  margin: 20px 0 20px 0;
+  font-size: 25px;
+  font-weight: 900;
+  text-align: center;
+  color: #ff6200;
 }
