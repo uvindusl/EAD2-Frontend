@@ -42,15 +42,13 @@ input::placeholder {
   text-align: left;
 } */
 
-/* Title
 .form-title {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #4c3407;
-  text-align: left;
-  font-family: "Pacifico", cursive;
-  font-weight: bold;
-} */
+  margin: 20px 0 20px 0;
+  font-size: 25px;
+  font-weight: 900;
+  text-align: center;
+  color: var(--main-color);
+}
 .page-wrapper {
   display: flex;
   flex-direction: column;
@@ -132,45 +130,53 @@ input::placeholder {
 .file-input {
   font-size: 13px;
   color: #333;
+  width: 225px;
 }
 
 /* Buttons */
 .button-group {
   display: flex;
   margin-top: 10px;
-  justify-content: left;
+  justify-content: right;
+  width: 500px;
 }
 
 .save-button {
-  background-color: #ff9a02;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
+  margin: 20px;
+  width: 100px;
+  height: 40px;
   border-radius: 5px;
-  margin-right: 50px;
-  width: 80px;
-  height: 50px;
+  border: 2px solid var(--main-color);
+  background-color: #ffab91; /* Changed to Light Orange */
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  align-self: center;
 }
 
 .cancel-button {
-  background-color: #ff0202;
-  color: rgb(255, 255, 255);
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
+  margin: 20px;
+  width: 100px;
+  height: 40px;
   border-radius: 5px;
-  margin-left: 80px;
-  width: 80px;
-  height: 50px;
+  border: 2px solid var(--main-color);
+  background-color: #fc2626;
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  align-self: center;
 }
 
 .save-button:hover {
-  background-color: #a65f2d;
+  background-color: #ff6a00;
 }
 
 .cancel-button:hover {
-  background-color: #ddd;
+  background-color: #ff0000aa;
 }
 
 .image-box-button {

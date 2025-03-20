@@ -54,8 +54,8 @@ const UpdateFood: React.FC = () => {
   return (
     <div>
       <NavBar />
-      <div className="page-wrapper">
-        <h2>Update Food</h2>
+      <div className="page-wrapper2">
+        <h2 className="title">Update Food</h2>
         <div className="update-food-container">
           <form className="form-content" onSubmit={handleUpdate}>
             <label>Title:</label>
@@ -92,8 +92,18 @@ const UpdateFood: React.FC = () => {
             {preview && (
               <img src={preview} alt="Preview" className="image-preview" />
             )}
-
-            <button type="submit">Update</button>
+            <div className="button-group">
+              <button type="submit" className="update-button">
+                Update
+              </button>
+              <button
+                type="button"
+                className="cancel-button"
+                onClick={() => {}}
+              >
+                Cancel
+              </button>
+            </div>
           </form>
         </div>
       </div>
