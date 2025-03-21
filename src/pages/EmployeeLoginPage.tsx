@@ -71,7 +71,9 @@ function EmployeeLoginPage() {
           />
         </div>
       </div>
-      <Footer />
+      <div className="footer1">
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -107,7 +107,9 @@ function LoginPage() {
           />
         </div>
       </div>
-      <Footer />
+      <div className="footer2">
+        <Footer />
+      </div>
     </div>
   );
 }

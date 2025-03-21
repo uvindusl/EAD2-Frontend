@@ -74,7 +74,9 @@ function EmployeeViewFood() {
           </div>
         )}
       </div>
-      <Footer />
+      <div className="footer4">
+        <Footer />
+      </div>
     </>
   );
 }

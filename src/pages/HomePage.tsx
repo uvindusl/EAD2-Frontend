@@ -67,7 +67,9 @@ function HomePage() {
           </div>
         )}
       </div>
-      <Footer />
+      <div className="footer">
+        <Footer />
+      </div>
     </div>
   );
 }

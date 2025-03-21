@@ -104,6 +104,14 @@ h3 {
   text-align: left;
 }
 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
 /* Media query for responsive design */
 @media (min-width: 768px) {
   .checkout-container {

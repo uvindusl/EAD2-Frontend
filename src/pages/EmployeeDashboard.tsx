@@ -71,8 +71,9 @@ const EmployeeDashboard: React.FC = () => {
           ))}
         </div>
       </main>
-
-      <Footer />
+      <div className="footer3">
+        <Footer />
+      </div>
     </div>
   );
 };

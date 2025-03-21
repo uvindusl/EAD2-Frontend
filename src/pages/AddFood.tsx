@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import NavBar from "../components/navBar";
 import Footer from "../components/Footer";
 import "../css/AddFood.css";
+import EmployeeNavBar from "../components/EmployeeNavBar";
 
 const AddFood: React.FC = () => {
   const [title, setTitle] = useState("");
@@ -61,7 +61,7 @@ const AddFood: React.FC = () => {
 
   return (
     <div>
-      <NavBar />
+      <EmployeeNavBar />
       <div className="page-wrapper">
         <div className="add-food-container">
           <div className="form-box">
@@ -142,7 +142,9 @@ const AddFood: React.FC = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      <div className="footer9">
+        <Footer />
+      </div>
     </div>
   );
 };
