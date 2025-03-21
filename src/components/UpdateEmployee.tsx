@@ -50,7 +50,7 @@ function UpdateEmployee() {
 
       alert("Employee Updated Successfully!");
       setError(null);
-      navigate("/empview");
+      navigate("/employee/view/employees");
     } catch (error) {
       console.error("Error updating employee:", error);
       setError("Failed to update employee.");
@@ -62,7 +62,7 @@ function UpdateEmployee() {
       <h2>Update Employee</h2>
       {error && <p className="error-message">{error}</p>}
 
-      <form onSubmit={handleSubmit}>
+      <form className="form-content" onSubmit={handleSubmit}>
         <label>Employee Name</label>
         <input
           type="text"
@@ -70,6 +70,7 @@ function UpdateEmployee() {
           value={employee.name}
           onChange={handleChange}
           required
+          pattern="[A-Za-z]*"
         />
 
         <label>Employee Address</label>
@@ -83,7 +84,7 @@ function UpdateEmployee() {
 
         <label>Employee Telephone Number</label>
         <input
-          type="text"
+          type="number"
           name="telephone"
           value={employee.telephone}
           onChange={handleChange}

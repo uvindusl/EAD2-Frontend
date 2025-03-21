@@ -58,50 +58,50 @@ function AddEmployee() {
 
   return (
     <div className="form-container">
-      <h2>Add New Employee</h2>
       {error && <p className="error-message">{error}</p>}
 
-      <form onSubmit={handleSubmit}>
-        <label>Employee Name</label>
+      <form className="form-content" onSubmit={handleSubmit}>
         <input
           type="text"
           name="name"
+          placeholder="Employee Name"
           value={employee.name}
           onChange={handleChange}
           required
+          pattern="[A-Za-z]*"
         />
 
-        <label>Employee Address</label>
         <input
           type="text"
           name="address"
+          placeholder="Employee Address"
           value={employee.address}
           onChange={handleChange}
           required
         />
 
-        <label>Employee Telephone Number</label>
         <input
-          type="text"
+          type="number"
           name="telephone"
+          placeholder="Employee Telephone Number"
           value={employee.telephone}
           onChange={handleChange}
           required
         />
 
-        <label>Password</label>
         <input
           type="password"
           name="password"
+          placeholder="Password"
           value={employee.password}
           onChange={handleChange}
           required
         />
 
-        <label>Retype Password</label>
         <input
           type="password"
           name="retypePassword"
+          placeholder="Retype Password"
           value={employee.retypePassword}
           onChange={handleChange}
           required

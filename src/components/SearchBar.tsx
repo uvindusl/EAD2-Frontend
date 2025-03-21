@@ -1,33 +1,49 @@
 import styled from "styled-components";
+import { useState } from "react";
 
-const SearchBar = () => {
+const SearchBar = ({ onSearch }: { onSearch: (query: string) => void }) => {
+  const [query, setQuery] = useState("");
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
+  };
+
+  const handleSearch = (event: React.FormEvent) => {
+    event.preventDefault();
+    onSearch(query);
+  };
+
   return (
     <StyledWrapper>
-      <div className="ui-input-container">
-        <input
-          required
-          placeholder="Search World Best Pizza"
-          className="ui-input"
-          type="text"
-        />
-        <div className="ui-input-underline" />
-        <div className="ui-input-highlight" />
-        <div className="ui-input-icon">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinejoin="round"
-              strokeLinecap="round"
-              strokeWidth={2}
-              stroke="currentColor"
-              d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
-            />
-          </svg>
+      <form onSubmit={handleSearch}>
+        <div className="ui-input-container">
+          <input
+            value={query}
+            onChange={handleInputChange}
+            required
+            placeholder="Search World Best Pizza"
+            className="ui-input"
+            type="text"
+          />
+          <div className="ui-input-underline" />
+          <div className="ui-input-highlight" />
+          <div className="ui-input-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinejoin="round"
+                strokeLinecap="round"
+                strokeWidth={2}
+                stroke="currentColor"
+                d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+              />
+            </svg>
+          </div>
         </div>
-      </div>
+      </form>
     </StyledWrapper>
   );
 };
@@ -35,7 +51,7 @@ const SearchBar = () => {
 const StyledWrapper = styled.div`
   .ui-input-container {
     position: relative;
-    width: 400px; /* Increased width from 300px to 400px */
+    width: 400px;
   }
 
   .ui-input {
@@ -47,7 +63,7 @@ const StyledWrapper = styled.div`
     outline: none;
     background-color: transparent;
     transition: border-color 0.3s;
-    color: #000000; /* Changed typing text color to black */
+    color: #000000;
   }
 
   .ui-input:focus {
