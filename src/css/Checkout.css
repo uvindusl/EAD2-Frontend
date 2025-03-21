@@ -135,7 +135,6 @@ h3 {
   }
 }
 
-/* For the two-column layout as shown in your image */
 @media (min-width: 992px) {
   .checkout-container {
     display: grid;

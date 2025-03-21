@@ -43,7 +43,7 @@
 /* FoodPurchasePanel.css */
 .food-purchase-container {
   width: 100%;
-  min-height: calc(100vh - 70px); /* Subtract navbar height */
+  min-height: calc(100vh - 70px);
   padding: 0;
   margin: 0;
   display: flex;
