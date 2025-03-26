@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import NavBar from "../components/navBar";
 import Footer from "../components/Footer";
 import "../css/Checkout.css";
 import axios from "axios";
 
-// Define the Checkout interface
 interface CheckoutItem {
   id: number;
   name: string;
@@ -14,36 +14,139 @@ interface CheckoutItem {
 }
 
 function CheckoutPage() {
+  const customerId = Number(sessionStorage.getItem("customerId"));
   const [checkoutItems, setCheckoutItems] = useState<CheckoutItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [totalAmount, setTotalAmount] = useState<number>(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const apiUrl = "http://localhost:8081/order-development";
+    if (!customerId) {
+      setError("Invalid customer ID");
+      setLoading(false);
+      return;
+    }
 
-    setLoading(true);
-    axios
-      .get(apiUrl)
-      .then((response) => {
-        if (response.status === 200) {
-          setCheckoutItems(response.data);
-          // Calculate total amount
-          const total = response.data.reduce((sum: number, item: CheckoutItem) => sum + item.price * item.quantity, 0);
-          setTotalAmount(total);
-        } else if (response.status === 404) {
+    const fetchCheckoutData = async () => {
+      try {
+        const subOrdersResponse = await axios.get(
+          `http://localhost:8083/order-micro/suborders/${customerId}`
+        );
+        const subOrders = subOrdersResponse.data;
+
+        if (subOrders.length === 0) {
           setCheckoutItems([]);
-        } else {
-          setError("Failed to load checkout details.");
+          setTotalAmount(0);
+          setLoading(false);
+          return;
         }
-        setLoading(false);
-      })
-      .catch((error) => {
+
+        const foodDetailsPromises = subOrders.map((order: { foodId: any }) =>
+          axios.get(`http://localhost:8081/food-micro/foods/${order.foodId}`)
+        );
+
+        const foodResponses = await Promise.all(foodDetailsPromises);
+
+        const checkoutData: CheckoutItem[] = subOrders
+          .map((order: any, index: number) => {
+            const foodResponse = foodResponses[index];
+            if (foodResponse && foodResponse.data) {
+              const food = foodResponse.data;
+              return {
+                id: order.foodId,
+                name: food.name,
+                price: food.price,
+                quantity: order.quantity,
+                picture: food.picture,
+              };
+            } else {
+              console.warn(
+                `Food details not found for foodId: ${order.foodId}`
+              );
+              return null;
+            }
+          })
+          .filter(
+            (item: CheckoutItem | null) => item !== null
+          ) as CheckoutItem[];
+
+        setCheckoutItems(checkoutData);
+
+        const total = checkoutData.reduce(
+          (sum: number, item: CheckoutItem) => sum + item.price * item.quantity,
+          0
+        );
+        setTotalAmount(total);
+      } catch (error: any) {
         console.error("Error fetching checkout data:", error);
-        setError("Failed to load checkout details. Please try again later.");
+        setError("Failed to load checkout details.");
+      } finally {
         setLoading(false);
-      });
-  }, []);
+      }
+    };
+
+    fetchCheckoutData();
+  }, [customerId]);
+
+  const handlePayment = async () => {
+    if (!customerId) {
+      setError("Invalid customer ID");
+      return;
+    }
+
+    if (checkoutItems.length === 0) {
+      alert("No items to checkout.");
+      return;
+    }
+
+    try {
+      const orderTotalPrice = checkoutItems.reduce(
+        (sum: number, item: CheckoutItem) => sum + item.price * item.quantity,
+        0
+      );
+
+      const orderData = {
+        orderTotalPrice: orderTotalPrice,
+        orderCustomerId: customerId,
+      };
+
+      const response = await axios.post(
+        "http://localhost:8083/order-micro/orders",
+        orderData
+      );
+
+      if (response.status === 200 || response.status === 201) {
+        const orderId = response.data.orderId;
+
+        for (const item of checkoutItems) {
+          await axios.post("http://localhost:8083/order-micro/suborderlog", {
+            orderId: orderId,
+            foodId: item.id,
+            foodQty: item.quantity,
+            customerId: customerId,
+            orderStatus: "Pending",
+          });
+        }
+
+        await axios.delete(
+          `http://localhost:8083/order-micro/suborders/remove/${customerId}`
+        );
+
+        alert("Order placed Successfully.");
+
+        setCheckoutItems([]);
+        setTotalAmount(0);
+        navigate("/Payment", { state: { totalAmount: orderTotalPrice } });
+      }
+    } catch (error: any) {
+      console.error("Payment error:", error);
+      setError("Payment failed. Please try again.");
+      if (error.response?.data?.message) {
+        setError(`Payment failed: ${error.response.data.message}`);
+      }
+    }
+  };
 
   return (
     <div>
@@ -57,9 +160,17 @@ function CheckoutPage() {
           <div className="checkout-container">
             <h2>Checkout Summary</h2>
             <ul className="checkout-items">
-              {checkoutItems.map((item) => (
-                <li key={item.id} className="checkout-item">
-                  <img src={item.picture} alt={item.name} className="checkout-item-img" />
+              {checkoutItems.map((item, index) => (
+                <li key={`${item.id}-${index}`} className="checkout-item">
+                  <img
+                    src={
+                      item.picture
+                        ? `data:image/jpeg;base64,${item.picture}`
+                        : "/placeholder.png"
+                    }
+                    alt={item.name}
+                    className="checkout-item-img"
+                  />
                   <div className="checkout-item-details">
                     <h4>{item.name}</h4>
                     <p>Price: Rs. {item.price}</p>
@@ -69,13 +180,17 @@ function CheckoutPage() {
               ))}
             </ul>
             <h3>Total: Rs. {totalAmount}</h3>
-            <button className="proceed-btn">Proceed to Payment</button>
+            <button className="proceed-btn" onClick={handlePayment}>
+              Proceed to Payment
+            </button>
           </div>
         ) : (
-          <p>No items in checkout</p>
+          <p>No Orders</p>
         )}
       </div>
-      <Footer />
+      <div className="footer">
+        <Footer />
+      </div>
     </div>
   );
 }
