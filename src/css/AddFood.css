@@ -93,6 +93,9 @@ input::placeholder {
   border-radius: 4px;
   outline: none;
   background-color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
 }
 
 .textarea-field {
