@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import NavBar from "../components/navBar";
 import Footer from "../components/Footer";
 import axios from "axios";
 import "../css/UpdateFood.css";
+import EmployeeNavBar from "../components/EmployeeNavBar";
 
 const UpdateFood: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -53,7 +53,7 @@ const UpdateFood: React.FC = () => {
 
   return (
     <div>
-      <NavBar />
+      <EmployeeNavBar />
       <div className="page-wrapper2">
         <h2 className="title">Update Food</h2>
         <div className="update-food-container">
@@ -107,6 +107,7 @@ const UpdateFood: React.FC = () => {
           </form>
         </div>
       </div>
+
       <Footer />
     </div>
   );

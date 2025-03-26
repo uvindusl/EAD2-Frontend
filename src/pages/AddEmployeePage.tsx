@@ -1,19 +1,21 @@
 import AddEmployee from "../components/AddEmployee";
+import EmployeeNavBar from "../components/EmployeeNavBar";
 import Footer from "../components/Footer";
-import NavBar from "../components/navBar";
 import "../css/AddEmployee.css";
 
 function AddEmployeePage() {
   return (
     <div className="page-wrapper">
-      <NavBar />
+      <EmployeeNavBar />
       <div className="content-area">
         <h2>Add New Employee</h2>
         <div className="login-container1">
           <AddEmployee />
         </div>
       </div>
-      <Footer />
+      <div className="footer5">
+        <Footer />
+      </div>
     </div>
   );
 }

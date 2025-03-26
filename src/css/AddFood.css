@@ -1,11 +1,10 @@
-/* Page background */
 .add-food-container {
-  --input-focus: #ff8c00; /* Changed to Dark Orange */
+  --input-focus: #ff8c00;
   --font-color: #333;
   --font-color-sub: #666;
   --bg-color: #fff;
   --bg-color-alt: #666;
-  --main-color: #ff5722; /* Changed to Deep Orange */
+  --main-color: #ff5722;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +18,7 @@
   justify-content: center;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  background: #fff3e0; /* Changed to Light Orange */
+  background: #fff3e0;
   gap: 20px;
   border-radius: 5px;
   border: 2px solid var(--main-color);
@@ -53,7 +52,7 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-image: url("../assets/background_imresizer.jpg"); /* Replace with your image path */
+  background-image: url("../assets/background_imresizer.jpg");
 }
 /* Form layout */
 .form-content {
@@ -94,6 +93,9 @@ input::placeholder {
   border-radius: 4px;
   outline: none;
   background-color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
 }
 
 .textarea-field {
@@ -147,7 +149,7 @@ input::placeholder {
   height: 40px;
   border-radius: 5px;
   border: 2px solid var(--main-color);
-  background-color: #ffab91; /* Changed to Light Orange */
+  background-color: #ffab91;
   box-shadow: 4px 4px var(--main-color);
   font-size: 17px;
   font-weight: 600;
@@ -188,4 +190,25 @@ input::placeholder {
   border-radius: 5px;
   margin-top: 10px;
   height: 50px;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.success-popup {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 5px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s, fadeOut 0.5s 2.5s;
 }

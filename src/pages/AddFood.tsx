@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import NavBar from "../components/navBar";
 import Footer from "../components/Footer";
 import "../css/AddFood.css";
+import EmployeeNavBar from "../components/EmployeeNavBar";
 
 const AddFood: React.FC = () => {
   const [title, setTitle] = useState("");
@@ -18,6 +18,8 @@ const AddFood: React.FC = () => {
       setPreview(URL.createObjectURL(file));
     }
   };
+
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   // Handle Form Submission
   const handleSubmit = async (event: React.FormEvent) => {
@@ -42,7 +44,8 @@ const AddFood: React.FC = () => {
       });
 
       if (response.ok) {
-        alert("Food item added successfully!");
+        setShowSuccessPopup(true);
+        setTimeout(() => setShowSuccessPopup(false), 3000);
         setTitle("");
         setDescription("");
         setPrice("");
@@ -61,7 +64,7 @@ const AddFood: React.FC = () => {
 
   return (
     <div>
-      <NavBar />
+      <EmployeeNavBar />
       <div className="page-wrapper">
         <div className="add-food-container">
           <div className="form-box">
@@ -142,7 +145,14 @@ const AddFood: React.FC = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      <div className="footer9">
+        <Footer />
+      </div>
+      <div>
+        {showSuccessPopup && (
+          <div className="success-popup">Successfully add Food!</div>
+        )}
+      </div>
     </div>
   );
 };

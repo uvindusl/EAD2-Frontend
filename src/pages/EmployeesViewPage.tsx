@@ -77,7 +77,9 @@ function EmployeesViewPage() {
           </div>
         )}
       </div>
-      <Footer />
+      <div className="footer6">
+        <Footer />
+      </div>
     </div>
   );
 }

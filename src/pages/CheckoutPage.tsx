@@ -5,7 +5,6 @@ import Footer from "../components/Footer";
 import "../css/Checkout.css";
 import axios from "axios";
 
-// Define the Checkout interface
 interface CheckoutItem {
   id: number;
   name: string;
@@ -74,7 +73,6 @@ function CheckoutPage() {
 
         setCheckoutItems(checkoutData);
 
-        // Calculate total
         const total = checkoutData.reduce(
           (sum: number, item: CheckoutItem) => sum + item.price * item.quantity,
           0
@@ -111,18 +109,26 @@ function CheckoutPage() {
       const orderData = {
         orderTotalPrice: orderTotalPrice,
         orderCustomerId: customerId,
+        orderStatus: "Pending",
       };
-
-      console.log("Sending order data:", orderData);
 
       const response = await axios.post(
         "http://localhost:8083/order-micro/orders",
         orderData
       );
 
-      console.log("Order POST response:", response);
-
       if (response.status === 200 || response.status === 201) {
+        const orderId = response.data.orderId;
+
+        for (const item of checkoutItems) {
+          await axios.post("http://localhost:8083/order-micro/suborderlog", {
+            orderId: orderId,
+            foodId: item.id,
+            foodQty: item.quantity,
+            customerId: customerId,
+          });
+        }
+
         await axios.delete(
           `http://localhost:8083/order-micro/suborders/remove/${customerId}`
         );
@@ -151,11 +157,11 @@ function CheckoutPage() {
         ) : error ? (
           <p>{error}</p>
         ) : checkoutItems.length > 0 ? (
-          <div className="checkout-container">
+          <div className="checkout-container1">
             <h2>Checkout Summary</h2>
             <ul className="checkout-items">
-              {checkoutItems.map((item) => (
-                <li key={item.id} className="checkout-item">
+              {checkoutItems.map((item, index) => (
+                <li key={`${item.id}-${index}`} className="checkout-item">
                   <img
                     src={
                       item.picture
@@ -173,16 +179,20 @@ function CheckoutPage() {
                 </li>
               ))}
             </ul>
-            <h3>Total: Rs. {totalAmount}</h3>
-            <button className="proceed-btn" onClick={handlePayment}>
-              Proceed to Payment
-            </button>
+            <div className="checkout-total">
+              <h3>Total: Rs. {totalAmount}</h3>
+              <button className="proceed-btn" onClick={handlePayment}>
+                Proceed to Payment
+              </button>
+            </div>
           </div>
         ) : (
           <p>No Orders</p>
         )}
       </div>
-      <Footer />
+      <div className="footer1">
+        <Footer />
+      </div>
     </div>
   );
 }

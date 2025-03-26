@@ -4,12 +4,11 @@
   padding: 0 15px;
 }
 
-.checkout-container {
-  display: flex;
-  flex-direction: column;
+.checkout-container1 {
   background-color: #f5f5f5;
   padding: 20px;
   border-radius: 5px;
+  width: 75%;
 }
 
 .checkout-items {
@@ -63,7 +62,16 @@ h3 {
   text-align: right;
   padding-right: 15px;
 }
-
+.checkout-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
 .proceed-btn {
   background-color: #3498db;
   color: white;
@@ -104,6 +112,13 @@ h3 {
   text-align: left;
 }
 
+.footer1 {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
 /* Media query for responsive design */
 @media (min-width: 768px) {
   .checkout-container {
@@ -127,7 +142,6 @@ h3 {
   }
 }
 
-/* For the two-column layout as shown in your image */
 @media (min-width: 992px) {
   .checkout-container {
     display: grid;
