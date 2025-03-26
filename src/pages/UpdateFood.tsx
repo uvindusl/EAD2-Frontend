@@ -107,6 +107,7 @@ const UpdateFood: React.FC = () => {
           </form>
         </div>
       </div>
+
       <Footer />
     </div>
   );

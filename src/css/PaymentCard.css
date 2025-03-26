@@ -1,5 +1,6 @@
 .card {
   border-radius: 25px;
+  max-height: 18cm;
 }
 .pic-grid {
   display: flex;
@@ -21,17 +22,21 @@
 
 .img-container {
   width: 300px;
+  height: 260px;
 }
 
 .img-container.visa {
+  padding: 0.5cm;
   height: 300px;
 }
 
 .img-container.mastercard {
+  padding: 0.5cm;
   height: 225px;
 }
 
 .img-container.paypal {
+  padding: 0.5cm;
   width: 500px;
   height: 575px;
 }
