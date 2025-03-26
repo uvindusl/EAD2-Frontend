@@ -1,18 +1,20 @@
 .card {
   border-radius: 25px;
+  margin: 20px;
 }
 .pic-grid {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 10px 0;
-  height: 300px;
+  height: 200px;
+  width: 800px;
   overflow: hidden;
 }
 
 .sub-card {
-  height: 300px;
-  width: 300px;
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,20 +22,22 @@
 }
 
 .img-container {
-  width: 300px;
+  /* width: 300px; */
+  width: 100%;
 }
 
 .img-container.visa {
-  height: 300px;
+  /* height: 300px;*/
+  height: 75%;
 }
 
 .img-container.mastercard {
-  height: 225px;
+  /* height: 225px; */
 }
 
 .img-container.paypal {
-  width: 500px;
-  height: 575px;
+  width: 150%;
+  height: 150%;
 }
 
 .img-container:hover {
@@ -47,6 +51,13 @@ h1 {
 }
 
 .text {
-  margin: 50px;
+  margin: 15px;
   text-align: left;
+}
+
+.title1,
+.title2 {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 10px;
 }

@@ -190,7 +190,7 @@ function CheckoutPage() {
           <p>No Orders</p>
         )}
       </div>
-      <div className="footer">
+      <div className="footer1">
         <Footer />
       </div>
     </div>
