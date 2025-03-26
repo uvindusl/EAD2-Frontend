@@ -104,7 +104,7 @@ function FoodPurchasePanel({ food }: FoodPurchasePanelProps) {
 
           <div className="product-actions">
             <button
-              className="action-button add-to-cart"
+              className="action-button-add-to-cart"
               onClick={handleaddtocart}
               disabled={addtocartloading}
             >

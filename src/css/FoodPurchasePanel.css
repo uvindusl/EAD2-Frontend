@@ -10,6 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  
   background-color: #f9f6f1;
 }
 
@@ -93,6 +94,18 @@ body {
   border: none;
   cursor: pointer;
   font-weight: bold;
+}
+.action-button-add-to-cart{
+  background-color: #ff6f0019;
+  color: orange;
+  font-weight: bold;
+  width: 5cm;
+  border-width: 2px;
+  border-color: #fe8629e0;
+}
+.action-button-add-to-cart:hover{
+  background-color: #ff6f00;
+  color: white;
 }
 
 .buy-now {
