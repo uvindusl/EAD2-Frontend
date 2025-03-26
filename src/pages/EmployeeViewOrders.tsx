@@ -8,12 +8,12 @@ interface Order {
   orderId: number;
   orderCustomerId: number;
   orderTotalPrice: number;
+  orderStatus: string;
 }
 
 interface SubOrderLog {
   foodId: number;
   foodQty: number;
-  orderStatus: string;
 }
 
 interface Food {
@@ -49,7 +49,7 @@ function EmployeeViewOrders() {
       {
         try {
           await axios.patch(
-            `http://localhost:8083/order-micro/suborderlog/${orderId}`,
+            `http://localhost:8083/order-micro/orders/${orderId}`,
             {
               orderStatus: "Completed",
             }
@@ -169,7 +169,7 @@ function EmployeeViewOrders() {
                       ? `${customer.name} (${customer.address})`
                       : "Loading..."}
                     <br />
-                    Status:{""} {subOrdersMap[order.orderId]?.[0]?.orderStatus}
+                    Status: {order.orderStatus}
                   </p>
                   <div className="suborder-section">
                     <h4>Order Items</h4>
@@ -200,10 +200,7 @@ function EmployeeViewOrders() {
                   <button
                     className="markComplete"
                     onClick={() =>
-                      handlecomplete(
-                        order.orderId,
-                        subOrdersMap[order.orderId]?.[0]?.orderStatus
-                      )
+                      handlecomplete(order.orderId, order.orderStatus)
                     }
                   >
                     Mark as completed

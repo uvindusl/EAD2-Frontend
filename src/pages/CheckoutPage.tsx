@@ -109,6 +109,7 @@ function CheckoutPage() {
       const orderData = {
         orderTotalPrice: orderTotalPrice,
         orderCustomerId: customerId,
+        orderStatus: "Pending",
       };
 
       const response = await axios.post(
@@ -125,7 +126,6 @@ function CheckoutPage() {
             foodId: item.id,
             foodQty: item.quantity,
             customerId: customerId,
-            orderStatus: "Pending",
           });
         }
 
