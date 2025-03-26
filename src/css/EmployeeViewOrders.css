@@ -200,6 +200,17 @@
   padding-bottom: 0.5rem;
 }
 
+.markComplete {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin-top: 4rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
 .footer {
   position: fixed;
   left: 0;

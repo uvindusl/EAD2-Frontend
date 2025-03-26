@@ -13,6 +13,7 @@ interface Order {
 interface SubOrderLog {
   foodId: number;
   foodQty: number;
+  orderStatus: string;
 }
 
 interface Food {
@@ -38,6 +39,29 @@ function EmployeeViewOrders() {
   >({});
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
+  const handlecomplete = async (orderId: number, orderStatus: string) => {
+    if (orderStatus === "Completed") {
+      alert("Order already completed");
+      return;
+    } else {
+      window.confirm("Are you sure you want to mark this order as complete?");
+      {
+        try {
+          await axios.patch(
+            `http://localhost:8083/order-micro/suborderlog/${orderId}`,
+            {
+              orderStatus: "Completed",
+            }
+          );
+          window.location.reload();
+        } catch (err) {
+          console.error("Error marking order as complete:", err);
+          alert("Failed to mark order as complete.");
+        }
+      }
+    }
+  };
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -66,7 +90,6 @@ function EmployeeViewOrders() {
 
         setSubOrdersMap(subOrdersMapTemp);
 
-        // Step 3: Fetch food details based on foodIds
         const foodDetailsTemp: Record<number, Food> = {};
         for (const foodId of foodIdsSet) {
           const { data: food } = await axios.get(
@@ -145,6 +168,8 @@ function EmployeeViewOrders() {
                     {customer
                       ? `${customer.name} (${customer.address})`
                       : "Loading..."}
+                    <br />
+                    Status:{""} {subOrdersMap[order.orderId]?.[0]?.orderStatus}
                   </p>
                   <div className="suborder-section">
                     <h4>Order Items</h4>
@@ -172,6 +197,17 @@ function EmployeeViewOrders() {
                       );
                     })}
                   </div>
+                  <button
+                    className="markComplete"
+                    onClick={() =>
+                      handlecomplete(
+                        order.orderId,
+                        subOrdersMap[order.orderId]?.[0]?.orderStatus
+                      )
+                    }
+                  >
+                    Mark as completed
+                  </button>
                 </div>
               );
             })}

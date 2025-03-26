@@ -125,7 +125,7 @@ function CheckoutPage() {
             foodId: item.id,
             foodQty: item.quantity,
             customerId: customerId,
-            status: "Pending",
+            orderStatus: "Pending",
           });
         }
 
