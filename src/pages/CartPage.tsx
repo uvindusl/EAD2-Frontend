@@ -86,6 +86,17 @@ function CartPage() {
     fetchCartData();
   }, [customerid]);
 
+  const DeleteAll = async (customerId: number) => {
+    try {
+      const apiUrl = `http://localhost:8083/order-micro/carts/byCustomerId/${customerId}`;
+      await axios.delete(apiUrl);
+      window.location.reload();
+    } catch (error) {
+      console.error("Error", error);
+      setError("Failed to delete");
+    }
+  };
+
   const handleCheckout = async () => {
     if (!customerid) {
       setError("Invalid customer ID. Please log in again.");
@@ -146,6 +157,16 @@ function CartPage() {
             <p>Your cart is empty.</p>
           ) : (
             <div className="cart-cards-container">
+              <div className="cart-controls">
+                <div className="delete-all">
+                  <button
+                    className="delete-btn"
+                    onClick={() => DeleteAll(customerid)}
+                  >
+                    <i className="trash-icon"></i> Delete All
+                  </button>
+                </div>
+              </div>
               {cart.map((cartItem) => {
                 const foodItem = food.find(
                   (f) => Number(f.id) === Number(cartItem.foodId)
@@ -206,7 +227,9 @@ function CartPage() {
           </div>
         )}
       </div>
-      <Footer />
+      <div className="footer">
+        <Footer />
+      </div>
     </div>
   );
 }

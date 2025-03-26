@@ -1,16 +1,16 @@
-import AddEmployee from "../components/AddEmployee";
-import EmployeeNavBar from "../components/EmployeeNavBar";
+import UpdateEmployee from "../components/UpdateEmployee";
 import Footer from "../components/Footer";
 import "../css/AddEmployee.css";
+import EmployeeNavBar from "../components/EmployeeNavBar";
 
-function AddEmployeePage() {
+function UpdateEmployeePage() {
   return (
     <div className="page-wrapper">
       <EmployeeNavBar />
       <div className="content-area">
-        <h2>Add New Employee</h2>
+        <h2>Update Employee</h2>
         <div className="login-container1">
-          <AddEmployee />
+          <UpdateEmployee />
         </div>
       </div>
       <div className="footer">
@@ -20,4 +20,4 @@ function AddEmployeePage() {
   );
 }
 
-export default AddEmployeePage;
+export default UpdateEmployeePage;

@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import LoginForm from "../components/LoginForm";
-import NavBar from "../components/navBar";
 import "../css/LoginPage.css";
 import axios from "axios";
+import CustomerLoginHeader from "../components/CustomerLoginHeader";
 
 interface Customer {
   customerId: number;
@@ -96,7 +96,7 @@ function LoginPage() {
   };
   return (
     <div className="page-wrapper">
-      <NavBar />
+      <CustomerLoginHeader />
       <div className="content-area">
         <div className="login-container">
           <LoginForm
@@ -107,7 +107,9 @@ function LoginPage() {
           />
         </div>
       </div>
-      <Footer />
+      <div className="footer2">
+        <Footer />
+      </div>
     </div>
   );
 }

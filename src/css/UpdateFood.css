@@ -1,9 +1,37 @@
+.page-wrapper2 {
+  display: flex;
+  flex-direction: column;
+  min-height: 125vh;
+  background-image: url("../assets/background_imresizer.jpg");
+  background-repeat: no-repeat;
+}
+
 .update-food-container {
-  max-width: 700px;
-  margin: 30px auto;
+  --input-focus: #ff8c00;
+  --font-color: #333;
+  --font-color-sub: #666;
+  --bg-color: #fff;
+  --bg-color-alt: #666;
+  --main-color: #ff5722;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-content {
   padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background: #fff3e0;
+  gap: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  align-self: center;
 }
 
 .update-food-container h2 {
@@ -38,7 +66,9 @@
 }
 
 .update-food-container input[type="file"] {
-  margin: 5px 0 15px;
+  font-size: 13px;
+  color: #333;
+  width: 225px;
 }
 
 .update-food-container .image-preview {
@@ -47,19 +77,49 @@
   border-radius: 4px;
 }
 
-.update-food-container button {
-  background-color: #e68a3c;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  margin: 5px 5px 5px 0;
-  border-radius: 4px;
-  cursor: pointer;
-  align-self: flex-start;
+.button-group {
+  display: flex;
+  margin-top: 10px;
+  justify-content: right;
+  width: 500px;
 }
 
-.update-food-container button:hover {
-  background-color: #d17a2c;
+.update-button {
+  margin: 20px;
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: #ffab91;
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  align-self: left;
+}
+
+.cancel-button {
+  margin: 20px;
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: #fc2626;
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  align-self: center;
+}
+
+.save-button:hover {
+  background-color: #ff6a00;
+}
+
+.cancel-button:hover {
+  background-color: #ff0000aa;
 }
 
 .edit-picture-btn {
@@ -84,4 +144,12 @@
 
 .button-container button.cancel {
   background-color: #ccc;
+}
+
+.title {
+  margin: 20px 0 20px 0;
+  font-size: 25px;
+  font-weight: 900;
+  text-align: center;
+  color: #ff6200;
 }

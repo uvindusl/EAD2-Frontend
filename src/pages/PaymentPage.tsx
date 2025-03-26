@@ -14,7 +14,9 @@ function PaymentPage() {
       <div className="payment-page-container">
         <PaymentCard totalAmount={totalAmount} />
       </div>
-      <Footer />
+      <div className="footer9">
+        <Footer />
+      </div>
     </div>
   );
 }

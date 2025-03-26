@@ -1,9 +1,9 @@
 import EmployeeCard from "../components/EmployeeCard";
 import "../css/EmployeeViewPage.css";
-import Footer from "../components/Footer";
-import NavBar from "../components/navBar";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import EmployeeNavBar from "../components/EmployeeNavBar";
+import Footer from "../components/Footer";
 
 interface employee {
   id: number;
@@ -59,7 +59,7 @@ function EmployeesViewPage() {
 
   return (
     <div>
-      <NavBar />
+      <EmployeeNavBar />
       <div className="employeeCard-container">
         {loading ? (
           <p className="loading-message">Loading Employee Data...</p>
@@ -77,7 +77,9 @@ function EmployeesViewPage() {
           </div>
         )}
       </div>
-      <Footer />
+      <div className="footer">
+        <Footer />
+      </div>
     </div>
   );
 }

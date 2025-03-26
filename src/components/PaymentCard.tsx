@@ -1,4 +1,8 @@
 import "../css/PaymentCard.css";
+import visaLogo from "../assets/363_Visa_Credit_Card_logo-512.webp";
+import mastercardLogo from "../assets/R.png";
+import paypalLogo from "../assets/paypal-logo-transparent-free-png.webp";
+import cashLogo from "../assets/Cash.jpg";
 
 interface PaymentCardProps {
   totalAmount: number;
@@ -13,30 +17,26 @@ function PaymentCard({ totalAmount }: PaymentCardProps) {
         </div>
         <div className="pic-grid">
           <div className="sub-card visa">
-            <img
-              className="img-container visa"
-              src="../src/assets/363_Visa_Credit_Card_logo-512.webp"
-              alt="visa"
-            />
+            <img className="img-container visa" src={visaLogo} alt="visa" />
           </div>
           <div className="sub-card mastercard">
             <img
               className="img-container mastercard"
-              src="../src/assets/R.png"
+              src={mastercardLogo}
               alt="mastercard"
             />
           </div>
           <div className="sub-card paypal">
             <img
               className="img-container paypal"
-              src="../src/assets/paypal-logo-transparent-free-png.webp"
+              src={paypalLogo}
               alt="paypal"
             />
           </div>
           <div className="sub-card">
             <img
               className="img-container cash"
-              src="../src/assets/Cash.jpg"
+              src={cashLogo}
               alt="cash on delivery"
             />
           </div>
