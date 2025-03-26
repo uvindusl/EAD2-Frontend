@@ -70,6 +70,7 @@ function UpdateEmployee() {
           value={employee.name}
           onChange={handleChange}
           required
+          pattern="[A-Za-z]*"
         />
 
         <label>Employee Address</label>

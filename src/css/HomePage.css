@@ -39,6 +39,14 @@
   margin: 2rem 0;
 }
 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
   .food-grid {

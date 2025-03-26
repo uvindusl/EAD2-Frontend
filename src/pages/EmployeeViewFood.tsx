@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import FoodGrid from "../components/FoodGrid";
 import "../css/EmployeeViewFood.css";
 import axios from "axios";
-import NavBar from "../components/navBar";
 import Footer from "../components/Footer";
+import EmployeeNavBar from "../components/EmployeeNavBar";
 
 interface Food {
   id: number;
@@ -53,7 +53,7 @@ function EmployeeViewFood() {
 
   return (
     <>
-      <NavBar />
+      <EmployeeNavBar />
       <div className="food-grid-page-evf">
         {loading ? (
           <p className="loading-message">Loading menu items...</p>
@@ -74,7 +74,9 @@ function EmployeeViewFood() {
           </div>
         )}
       </div>
-      <Footer />
+      <div className="footer4">
+        <Footer />
+      </div>
     </>
   );
 }

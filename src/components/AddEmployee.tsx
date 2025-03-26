@@ -68,6 +68,7 @@ function AddEmployee() {
           value={employee.name}
           onChange={handleChange}
           required
+          pattern="[A-Za-z]*"
         />
 
         <input

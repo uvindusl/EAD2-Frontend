@@ -236,3 +236,11 @@ input[type="text"]:focus + .absolute {
 .grid > div:nth-child(4) {
   animation-delay: 0.4s;
 }
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}

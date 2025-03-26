@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Footer from "../components/Footer";
-import NavBar from "../components/navBar";
 import "../css/EmployeeDashboard.css";
 import { useNavigate } from "react-router-dom";
+import EmployeeNavBar from "../components/EmployeeNavBar";
 
 interface DashboardTile {
   title: string;
@@ -48,7 +48,7 @@ const EmployeeDashboard: React.FC = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen">
-      <NavBar />
+      <EmployeeNavBar />
 
       <main className="container mx-auto p-4">
         <div className="mb-6">
@@ -71,8 +71,9 @@ const EmployeeDashboard: React.FC = () => {
           ))}
         </div>
       </main>
-
-      <Footer />
+      <div className="footer3">
+        <Footer />
+      </div>
     </div>
   );
 };

@@ -5,7 +5,6 @@ import Footer from "../components/Footer";
 import "../css/Checkout.css";
 import axios from "axios";
 
-// Define the Checkout interface
 interface CheckoutItem {
   id: number;
   name: string;
@@ -74,7 +73,6 @@ function CheckoutPage() {
 
         setCheckoutItems(checkoutData);
 
-        // Calculate total
         const total = checkoutData.reduce(
           (sum: number, item: CheckoutItem) => sum + item.price * item.quantity,
           0
@@ -113,16 +111,24 @@ function CheckoutPage() {
         orderCustomerId: customerId,
       };
 
-      console.log("Sending order data:", orderData);
-
       const response = await axios.post(
         "http://localhost:8083/order-micro/orders",
         orderData
       );
 
-      console.log("Order POST response:", response);
-
       if (response.status === 200 || response.status === 201) {
+        const orderId = response.data.orderId;
+
+        for (const item of checkoutItems) {
+          await axios.post("http://localhost:8083/order-micro/suborderlog", {
+            orderId: orderId,
+            foodId: item.id,
+            foodQty: item.quantity,
+            customerId: customerId,
+            orderStatus: "Pending",
+          });
+        }
+
         await axios.delete(
           `http://localhost:8083/order-micro/suborders/remove/${customerId}`
         );
@@ -154,8 +160,8 @@ function CheckoutPage() {
           <div className="checkout-container">
             <h2>Checkout Summary</h2>
             <ul className="checkout-items">
-              {checkoutItems.map((item) => (
-                <li key={item.id} className="checkout-item">
+              {checkoutItems.map((item, index) => (
+                <li key={`${item.id}-${index}`} className="checkout-item">
                   <img
                     src={
                       item.picture
@@ -182,7 +188,9 @@ function CheckoutPage() {
           <p>No Orders</p>
         )}
       </div>
-      <Footer />
+      <div className="footer">
+        <Footer />
+      </div>
     </div>
   );
 }
