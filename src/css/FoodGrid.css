@@ -44,8 +44,8 @@
 }
 
 .food-image {
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   overflow: hidden;
 }
 
@@ -73,7 +73,20 @@
   text-align: center;
   width: 100%;
 }
-
+.food-edit-button {
+  background-color: #f9b516;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 16px;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .food-delete-button {
   background-color: #f70004;
   border: none;
