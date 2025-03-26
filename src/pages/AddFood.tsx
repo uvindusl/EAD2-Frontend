@@ -19,6 +19,8 @@ const AddFood: React.FC = () => {
     }
   };
 
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+
   // Handle Form Submission
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -42,7 +44,8 @@ const AddFood: React.FC = () => {
       });
 
       if (response.ok) {
-        alert("Food item added successfully!");
+        setShowSuccessPopup(true);
+        setTimeout(() => setShowSuccessPopup(false), 3000);
         setTitle("");
         setDescription("");
         setPrice("");
@@ -144,6 +147,11 @@ const AddFood: React.FC = () => {
       </div>
       <div className="footer9">
         <Footer />
+      </div>
+      <div>
+        {showSuccessPopup && (
+          <div className="success-popup">Successfully add Food!</div>
+        )}
       </div>
     </div>
   );

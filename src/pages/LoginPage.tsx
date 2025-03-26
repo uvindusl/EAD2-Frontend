@@ -75,7 +75,7 @@ function LoginPage() {
           // HTTP 201 indicates resource creation
           const newCustomer = response.data;
           setCustomer(newCustomer);
-          window.location.reload();
+          navigate("/Home");
         }
       })
       .catch((error) => {
