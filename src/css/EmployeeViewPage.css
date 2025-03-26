@@ -8,10 +8,11 @@
   margin-top: 20px;
   justify-self: center;
   border-radius: 25px;
+  background: radial-gradient(transparent, rgb(255, 162, 0));
 }
 
-.footer {
-  position: fixed;
+.footer6 {
+  margin-top: 20px;
   left: 0;
   bottom: 0;
   width: 100%;
