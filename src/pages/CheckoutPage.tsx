@@ -157,7 +157,7 @@ function CheckoutPage() {
         ) : error ? (
           <p>{error}</p>
         ) : checkoutItems.length > 0 ? (
-          <div className="checkout-container">
+          <div className="checkout-container1">
             <h2>Checkout Summary</h2>
             <ul className="checkout-items">
               {checkoutItems.map((item, index) => (
@@ -179,10 +179,12 @@ function CheckoutPage() {
                 </li>
               ))}
             </ul>
-            <h3>Total: Rs. {totalAmount}</h3>
-            <button className="proceed-btn" onClick={handlePayment}>
-              Proceed to Payment
-            </button>
+            <div className="checkout-total">
+              <h3>Total: Rs. {totalAmount}</h3>
+              <button className="proceed-btn" onClick={handlePayment}>
+                Proceed to Payment
+              </button>
+            </div>
           </div>
         ) : (
           <p>No Orders</p>
