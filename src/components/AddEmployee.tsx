@@ -30,7 +30,7 @@ function AddEmployee() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8082/employee-micro/register",
+        "http://localhost:8082/employee-micro/employees",
         {
           employeeName: employee.name,
           employeeAddress: employee.address,
