@@ -10,6 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  
   background-color: #f9f6f1;
 }
 
@@ -27,6 +28,13 @@ body {
   background-color: white;
   border-radius: 10px;
   margin-right: 30px;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .product-details {
@@ -68,7 +76,7 @@ body {
 .quantity-button {
   background: none;
   border: none;
-  font-size: 18px;
+  font-size: 10px;
   cursor: pointer;
   color: #333;
 }
@@ -81,11 +89,23 @@ body {
 }
 
 .action-button {
-  padding: 12px 20px;
+  padding: 12px 10px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
   font-weight: bold;
+}
+.action-button-add-to-cart{
+  background-color: #ff6f0019;
+  color: orange;
+  font-weight: bold;
+  width: 5cm;
+  border-width: 2px;
+  border-color: #fe8629e0;
+}
+.action-button-add-to-cart:hover{
+  background-color: #ff6f00;
+  color: white;
 }
 
 .buy-now {
@@ -99,27 +119,64 @@ body {
 }
 
 .btn1 {
-  background-color: #ff8c00;
+  background-color: #07b404;
   color: #ffffff;
   border: none;
-  margin-right: 20px;
+  margin-right: 10px;
   cursor: pointer;
   border-radius: 5px;
+  height: 28px;
+  width: 28px;
+  padding: 0px;
 }
 
 button:hover {
   background-color: #ff7000;
 }
 
+/* Updated success popup to appear lower in the top corner */
 .success-popup {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #4caf50; /* Green background */
+  top: 80px;
+  right: 20px;
+  background-color: #4caf50;
   color: white;
-  padding: 20px;
+  padding: 15px 25px;
   border-radius: 5px;
   z-index: 1000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s, fadeOut 0.5s 2.5s;
+}
+
+.unsuccess-popup {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background-color: #af4c4c;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 5px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s, fadeOut 0.5s 2.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

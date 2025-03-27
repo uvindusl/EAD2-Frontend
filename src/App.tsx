@@ -9,7 +9,12 @@ import EmployeesViewPage from "./pages/EmployeesViewPage";
 import EmployeeViewFood from "./pages/EmployeeViewFood";
 import CheckoutPage from "./pages/CheckoutPage";
 import AddEmployeePage from "./pages/AddEmployeePage";
-import UpdateEmployee from "./components/UpdateEmployee";
+import UpdateEmployeePage from "./pages/UpdateEmployeePage";
+import AddFood from "./pages/AddFood";
+import UpdateFood from "./pages/UpdateFood";
+import EmployeeDashboard from "./pages/EmployeeDashboard";
+import PaymentPage from "./pages/PaymentPage";
+import EmployeeViewOrders from "./pages/EmployeeViewOrders";
 
 function App() {
   return (
@@ -17,15 +22,35 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<LoginPage />}></Route>
-          <Route path="/home" element={<HomePage />}></Route>
+          <Route path="/Home" element={<HomePage />}></Route>
           <Route path="/food/:id" element={<FoodPage />}></Route>
           <Route path="/cart" element={<CartPage />}></Route>
-          <Route path="/emplogin" element={<EmployeeLoginPage />}></Route>
-          <Route path="/empview" element={<EmployeesViewPage />}></Route>
-          <Route path="/foodview" element={<EmployeeViewFood />}></Route>
+          <Route path="/employee" element={<EmployeeLoginPage />}></Route>
+          <Route
+            path="/employee/view/employees"
+            element={<EmployeesViewPage />}
+          ></Route>
+          <Route
+            path="/employee/view/foods"
+            element={<EmployeeViewFood />}
+          ></Route>
           <Route path="/checkout" element={<CheckoutPage />}></Route>
-          <Route path="/addemployee" element={<AddEmployeePage />}></Route>
-          <Route path="/updateemployee/:id" element={<UpdateEmployee />} />
+          <Route
+            path="/employee/add/employee"
+            element={<AddEmployeePage />}
+          ></Route>
+          <Route
+            path="/employee/update/employee/:id"
+            element={<UpdateEmployeePage />}
+          />
+          <Route path="/employee/add/food" element={<AddFood />} />
+          <Route path="/employee/update/food/:id" element={<UpdateFood />} />
+          <Route path="/employee/dashboard" element={<EmployeeDashboard />} />
+          <Route path="/Payment" element={<PaymentPage />} />
+          <Route
+            path="/employee/view/orders"
+            element={<EmployeeViewOrders />}
+          />
         </Routes>
       </main>
     </div>

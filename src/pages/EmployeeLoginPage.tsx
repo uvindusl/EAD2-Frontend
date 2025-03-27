@@ -2,9 +2,9 @@ import EmployeeLoginForm from "../components/EmployeeLoginForm";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-import NavBar from "../components/navBar";
 import "../css/LoginPage.css";
 import axios from "axios";
+import CustomerLoginHeader from "../components/CustomerLoginHeader";
 
 interface employee {
   employeeId: number;
@@ -21,7 +21,7 @@ function EmployeeLoginPage() {
   const navigate = useNavigate();
 
   const handleLogin = (username: string, password: string) => {
-    const apiUrl = `http://localhost:8080/employee-micro/employees?name=${username}&password=${password}`;
+    const apiUrl = `http://localhost:8082/employee-micro/employees?name=${username}&password=${password}`;
 
     setLoading(true);
     setError(null);
@@ -33,7 +33,7 @@ function EmployeeLoginPage() {
           //HTTP 200 status is scuccessful connect with the server and send data
           const employeeid = response.data;
           setemployee(response.data);
-          navigate("/home");
+          navigate("/employee/dashboard");
 
           //stroe the employee id
           sessionStorage.setItem(
@@ -61,7 +61,7 @@ function EmployeeLoginPage() {
 
   return (
     <div className="page-wrapper">
-      <NavBar />
+      <CustomerLoginHeader />
       <div className="content-area">
         <div className="login-container">
           <EmployeeLoginForm
@@ -71,7 +71,9 @@ function EmployeeLoginPage() {
           />
         </div>
       </div>
-      <Footer />
+      <div className="footer1">
+        <Footer />
+      </div>
     </div>
   );
 }

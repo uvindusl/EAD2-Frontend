@@ -69,6 +69,7 @@ function FoodPage() {
           <p>Food not found</p>
         )}
       </div>
+
       <Footer />
     </div>
   );

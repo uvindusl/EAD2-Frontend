@@ -1,5 +1,6 @@
-// CartCard.tsx
 import "../css/CartCard.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 interface Cart {
   foodid: string;
@@ -8,16 +9,45 @@ interface Cart {
   foodimg: string;
   qty: number;
   subtotal: number;
+  cartId: number;
+  customerId: number;
 }
 
 interface CartCardProps {
+  handleSingleDelete: (cartId: number) => void;
   cart: Cart;
 }
 
-function CartCard({ cart }: CartCardProps) {
+function CartCard({ cart, handleSingleDelete }: CartCardProps) {
   const imageSource = cart.foodimg
     ? `data:image/jpeg;base64,${cart.foodimg}`
     : "/placeholder.png";
+  const navigate = useNavigate();
+
+  const handleSingleCheckout = async () => {
+    try {
+      // 1. Checkout one item by creating suborder
+      await axios.post("http://localhost:8083/order-micro/suborders", {
+        customerId: cart.customerId,
+        foodId: Number(cart.foodid),
+        quantity: cart.qty,
+      });
+
+      // 2. Remove item from cart by cartId
+      await axios.delete(
+        `http://localhost:8083/order-micro/carts/byCartId/${cart.cartId}`
+      );
+
+      // 3. Remove from local cart list
+      handleSingleDelete(cart.cartId);
+
+      // 4. Redirect to checkout page
+      navigate("/checkout");
+    } catch (error) {
+      console.error("Single item checkout error", error);
+      alert("Failed to checkout this item. Please try again.");
+    }
+  };
 
   return (
     <div className="cart-card">
@@ -42,10 +72,15 @@ function CartCard({ cart }: CartCardProps) {
         </div>
 
         <div className="cart-actions">
-          <button className="cart-delete-button">
+          <button
+            className="cart-delete-button"
+            onClick={() => handleSingleDelete(cart.cartId)}
+          >
             <img src="../src/assets/delete.svg" alt="Delete" />
           </button>
-          <button className="checkout-btn">Checkout</button>
+          <button className="checkout-btn" onClick={handleSingleCheckout}>
+            Checkout
+          </button>
         </div>
       </div>
     </div>
