@@ -32,7 +32,7 @@ function LoginPage() {
           //HTTP 200 status is scuccessful connect with the server and send data
           const customerid = response.data;
           setCustomer(response.data);
-          navigate("/Home");
+          navigate("/Home"); // Ensure this matches the route defined in your router
 
           //stroe the customer id
           sessionStorage.setItem(
@@ -59,7 +59,7 @@ function LoginPage() {
   };
 
   const handleSignUp = (username: string, address: string, tel: number) => {
-    const apiUrl = "http://localhost:8080/customer-micro/customers"; // API endpoint for customer creation
+    const apiUrl = "http://localhost:8080/customer-micro/customers";
 
     setLoading(true);
     setError(null);
@@ -71,11 +71,18 @@ function LoginPage() {
         customerTel: tel,
       })
       .then((response) => {
-        if (response.status === 201) {
+        if (response.status === 200) {
           // HTTP 201 indicates resource creation
           const newCustomer = response.data;
           setCustomer(newCustomer);
-          window.location.reload();
+          navigate("/Home");
+
+          //stroe the customer id
+          sessionStorage.setItem(
+            "customerId",
+            newCustomer.customerId.toString()
+          );
+          // console.log(newCustomer.customerId);
         }
       })
       .catch((error) => {

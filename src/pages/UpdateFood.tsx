@@ -18,6 +18,10 @@ const UpdateFood: React.FC = () => {
   const [image, setImage] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
 
+  const handlecancel = async () => {
+    navigate("/employee/view/foods");
+  };
+
   useEffect(() => {
     axios.get(`http://localhost:8081/food-micro/foods/${id}`).then((res) => {
       setFood(res.data);
@@ -99,7 +103,7 @@ const UpdateFood: React.FC = () => {
               <button
                 type="button"
                 className="cancel-button"
-                onClick={() => {}}
+                onClick={handlecancel}
               >
                 Cancel
               </button>

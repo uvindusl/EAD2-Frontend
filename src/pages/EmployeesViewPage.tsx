@@ -61,23 +61,25 @@ function EmployeesViewPage() {
     <div>
       <EmployeeNavBar />
       <div className="employeeCard-container">
-        {loading ? (
-          <p className="loading-message">Loading Employee Data...</p>
-        ) : error ? (
-          <p className="error-message">{error}</p>
-        ) : (
-          <div>
-            {employees.map((employee) => (
-              <EmployeeCard
-                key={employee.id}
-                employee={employee}
-                handleDeleteClick={DeleteClick}
-              />
-            ))}
-          </div>
-        )}
+        <div className="employeeCard-container__content">
+          {loading ? (
+            <p className="loading-message">Loading Employee Data...</p>
+          ) : error ? (
+            <p className="error-message">{error}</p>
+          ) : (
+            <div className="employeePage-grid">
+              {employees.map((employee) => (
+                <EmployeeCard
+                  key={employee.id}
+                  employee={employee}
+                  handleDeleteClick={DeleteClick}
+                />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
-      <div className="footer">
+      <div className="footer6">
         <Footer />
       </div>
     </div>

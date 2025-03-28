@@ -13,8 +13,9 @@ function AddEmployeePage() {
           <AddEmployee />
         </div>
       </div>
-
-      <Footer />
+      <div className="footer5">
+        <Footer />
+      </div>
     </div>
   );
 }

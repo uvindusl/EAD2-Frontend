@@ -12,6 +12,7 @@ function AddEmployee() {
   });
 
   const [error, setError] = useState<string | null>(null);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmployee({
@@ -30,7 +31,7 @@ function AddEmployee() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8082/employee-micro/register",
+        "http://localhost:8082/employee-micro/employees",
         {
           employeeName: employee.name,
           employeeAddress: employee.address,
@@ -40,7 +41,8 @@ function AddEmployee() {
       );
 
       console.log("New Employee Data:", response.data);
-      alert("Employee Added Successfully!");
+      setShowSuccessPopup(true);
+      setTimeout(() => setShowSuccessPopup(false), 3000);
 
       setEmployee({
         name: "",
@@ -111,6 +113,11 @@ function AddEmployee() {
           Add New Employee
         </button>
       </form>
+      <div>
+        {showSuccessPopup && (
+          <div className="success-popup">Successfully add Employee!</div>
+        )}
+      </div>
     </div>
   );
 }
