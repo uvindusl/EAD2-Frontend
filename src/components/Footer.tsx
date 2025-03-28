@@ -13,22 +13,21 @@ function Footer() {
         </div>
         <div className="col-2">
           <div className="row1">
-            <h4>Contact Us</h4><br></br>
+            <h4>Contact Us</h4>
+            <br></br>
           </div>
           <div className="row2">
-            
-            
             <p>
               Independence Arcade Commercial Complex, <br></br>
               Independence Ave, <br></br>
               Colombo00700, <br></br>
               Sri Lanka.<br></br>
               <a className="custom-a" href="mailto:garfields@gmail.com">
-              garfields@gmail.com
-            </a><br></br>
+                garfields@gmail.com
+              </a>
+              <br></br>
               +94 76-5506968
             </p>
-            
           </div>
         </div>
         <div className="col-3">
@@ -56,7 +55,6 @@ function Footer() {
       <div className="bottom">
         <p>&copy; 2025 Garfield's Cheesy Haven</p>
       </div>
-      
     </footer>
   );
 }

@@ -14,15 +14,12 @@ footer {
   width: 300px;
   height: 220px;
   float: left;
-  
-  
 }
 
 div.col-1 {
   text-align: left;
   margin-left: 0px;
   margin-top: 30px;
-  
 }
 
 div.col-2 {
@@ -32,15 +29,12 @@ div.col-2 {
   margin-right: 0px;
   display: flexbox;
   padding: 0px;
-  
-  
 }
 
 div.col-3 {
   text-align: left;
   margin-left: 0px;
   margin-top: 30px;
-  
 }
 
 h4 {
@@ -61,7 +55,6 @@ h4 {
   color: #725244;
 }
 
-
 .row2 {
   font-family: "Arial", sans-serif;
   justify-content: space-between;
@@ -75,8 +68,7 @@ p {
   line-height: 1.6;
 }
 
-
-.bottom p{
+.bottom p {
   background-color: #ff8c00;
   text-align: center;
   font-size: 14px;
