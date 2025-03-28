@@ -36,7 +36,7 @@ const EmployeeDashboard: React.FC = () => {
     },
     {
       title: "View Orders",
-      description: "",
+      description: "View Order History and Update Status",
       icon: "📦",
       route: "/employee/view/orders",
       routeAdd: "",
