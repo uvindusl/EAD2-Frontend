@@ -76,6 +76,13 @@ function LoginPage() {
           const newCustomer = response.data;
           setCustomer(newCustomer);
           navigate("/Home");
+
+          //stroe the customer id
+          sessionStorage.setItem(
+            "customerId",
+            newCustomer.customerId.toString()
+          );
+          // console.log(newCustomer.customerId);
         }
       })
       .catch((error) => {
