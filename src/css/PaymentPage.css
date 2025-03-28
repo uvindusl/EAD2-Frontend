@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   padding: 20px;
   background-image: url("../assets/background_imresizer.jpg"); /* Replace with your image path */
   background-size: cover;

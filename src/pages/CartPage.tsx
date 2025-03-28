@@ -222,14 +222,13 @@ function CartPage() {
               </span>
             </div>
             <button className="checkout-btn" onClick={handleCheckout}>
-              Checkout
+              Checkout All
             </button>
           </div>
         )}
       </div>
-      <div className="footer">
-        <Footer />
-      </div>
+
+      <Footer />
     </div>
   );
 }

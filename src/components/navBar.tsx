@@ -29,17 +29,17 @@ function NavBar() {
               </a>
             </li>
             <li className="nav-item">
+              <a className="nav-link active" aria-current="page" href="/cart">
+                Cart
+              </a>
+            </li>
+            <li className="nav-item">
               <a
                 className="nav-link active"
                 aria-current="page"
                 href="/checkout"
               >
                 Order
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/cart">
-                Cart
               </a>
             </li>
           </ul>

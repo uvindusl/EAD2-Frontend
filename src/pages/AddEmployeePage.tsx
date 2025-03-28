@@ -13,7 +13,7 @@ function AddEmployeePage() {
           <AddEmployee />
         </div>
       </div>
-      <div className="footer">
+      <div className="footer5">
         <Footer />
       </div>
     </div>

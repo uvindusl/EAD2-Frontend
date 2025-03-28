@@ -13,9 +13,8 @@ function UpdateEmployeePage() {
           <UpdateEmployee />
         </div>
       </div>
-      <div className="footer">
-        <Footer />
-      </div>
+
+      <Footer />
     </div>
   );
 }

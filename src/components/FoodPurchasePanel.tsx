@@ -93,7 +93,7 @@ function FoodPurchasePanel({ food }: FoodPurchasePanelProps) {
                 +
               </button>
               <button
-                className="btn1"
+                className="btn2"
                 onClick={() => setCount((count) => (count > 0 ? count - 1 : 0))}
               >
                 -
@@ -104,7 +104,7 @@ function FoodPurchasePanel({ food }: FoodPurchasePanelProps) {
 
           <div className="product-actions">
             <button
-              className="action-button add-to-cart"
+              className="action-button-add-to-cart"
               onClick={handleaddtocart}
               disabled={addtocartloading}
             >

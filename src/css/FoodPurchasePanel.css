@@ -10,6 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+
   background-color: #f9f6f1;
 }
 
@@ -61,6 +62,9 @@ body {
 
 .quantity-selector {
   display: flex;
+  justify-content: space-evenly;
+  margin-left: 20px;
+  display: flex;
   align-items: center;
 }
 
@@ -94,6 +98,18 @@ body {
   cursor: pointer;
   font-weight: bold;
 }
+.action-button-add-to-cart {
+  background-color: #ff6f0019;
+  color: orange;
+  font-weight: bold;
+  width: 5cm;
+  border-width: 2px;
+  border-color: #fe8629e0;
+}
+.action-button-add-to-cart:hover {
+  background-color: #ff6f00;
+  color: white;
+}
 
 .buy-now {
   background-color: white;
@@ -113,7 +129,19 @@ body {
   cursor: pointer;
   border-radius: 5px;
   height: 28px;
-  width: 28px;
+  width: 50px;
+  padding: 0px;
+}
+
+.btn2 {
+  background-color: #f70004;
+  color: #ffffff;
+  border: none;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  height: 28px;
+  width: 50px;
   padding: 0px;
 }
 

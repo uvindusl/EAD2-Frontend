@@ -13,7 +13,7 @@ function PaymentCard({ totalAmount }: PaymentCardProps) {
     <div>
       <div className="card">
         <div className="header">
-          <h1>Proceed Payment</h1>
+          <h1 className="title1">Proceed Payment</h1>
         </div>
         <div className="pic-grid">
           <div className="sub-card visa">
@@ -42,7 +42,7 @@ function PaymentCard({ totalAmount }: PaymentCardProps) {
           </div>
         </div>
         <div className="price">
-          <h1>Total: Rs. {totalAmount}</h1>
+          <h1 className="title2">Total: Rs. {totalAmount}</h1>
         </div>
         <div className="text">
           <p>*Card payments may charge additional bank charges.</p>

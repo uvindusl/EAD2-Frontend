@@ -9,6 +9,8 @@ interface DashboardTile {
   description: string;
   icon: string;
   route: string;
+  routeAdd: string;
+  buttonName: string;
 }
 
 const EmployeeDashboard: React.FC = () => {
@@ -21,18 +23,24 @@ const EmployeeDashboard: React.FC = () => {
       description: "Update and Delete Foods",
       icon: "🍕",
       route: "/employee/view/foods",
+      routeAdd: "/employee/add/food",
+      buttonName: " foods",
     },
     {
       title: "Manage Employees",
       description: "Update and Delete Employees",
       icon: "👨‍🍳",
       route: "/employee/view/employees",
+      routeAdd: "/employee/add/employee",
+      buttonName: " employees",
     },
     {
       title: "View Orders",
-      description: "",
+      description: "View Order History and Update Status",
       icon: "📦",
       route: "/employee/view/orders",
+      routeAdd: "",
+      buttonName: "",
     },
   ];
 
@@ -44,6 +52,10 @@ const EmployeeDashboard: React.FC = () => {
 
   const navigateTo = (route: string) => {
     navigate(route);
+  };
+
+  const navigateToAdd = (routeAdd: string) => {
+    navigate(routeAdd);
   };
 
   return (
@@ -66,6 +78,17 @@ const EmployeeDashboard: React.FC = () => {
                 <div className="text-3xl mb-2">{tile.icon}</div>
                 <h3 className="font-bold text-lg mb-2">{tile.title}</h3>
                 <p className="text-gray-600">{tile.description}</p>
+                {tile.routeAdd && (
+                  <button
+                    className="add-button mt-4"
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent parent click event
+                      navigateToAdd(tile.routeAdd);
+                    }}
+                  >
+                    Add{tile.buttonName}
+                  </button>
+                )}
               </div>
             </div>
           ))}
