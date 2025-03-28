@@ -59,7 +59,6 @@ function UpdateEmployee() {
 
   return (
     <div className="form-container">
-      <h2>Update Employee</h2>
       {error && <p className="error-message">{error}</p>}
 
       <form className="form-content" onSubmit={handleSubmit}>

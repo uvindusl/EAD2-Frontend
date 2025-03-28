@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Footer from "../components/Footer";
 import "../css/AddFood.css";
 import EmployeeNavBar from "../components/EmployeeNavBar";
+import { useNavigate } from "react-router-dom";
 
 const AddFood: React.FC = () => {
   const [title, setTitle] = useState("");
@@ -10,6 +11,7 @@ const AddFood: React.FC = () => {
   const [image, setImage] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -17,6 +19,10 @@ const AddFood: React.FC = () => {
       setImage(file);
       setPreview(URL.createObjectURL(file));
     }
+  };
+
+  const handlecancel = async () => {
+    navigate("/employee/dashboard");
   };
 
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -134,7 +140,7 @@ const AddFood: React.FC = () => {
                     <button
                       type="button"
                       className="cancel-button"
-                      onClick={() => {}}
+                      onClick={handlecancel}
                     >
                       Cancel
                     </button>

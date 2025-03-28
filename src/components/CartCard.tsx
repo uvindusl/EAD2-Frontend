@@ -26,22 +26,18 @@ function CartCard({ cart, handleSingleDelete }: CartCardProps) {
 
   const handleSingleCheckout = async () => {
     try {
-      // 1. Checkout one item by creating suborder
       await axios.post("http://localhost:8083/order-micro/suborders", {
         customerId: cart.customerId,
         foodId: Number(cart.foodid),
         quantity: cart.qty,
       });
 
-      // 2. Remove item from cart by cartId
       await axios.delete(
         `http://localhost:8083/order-micro/carts/byCartId/${cart.cartId}`
       );
 
-      // 3. Remove from local cart list
       handleSingleDelete(cart.cartId);
 
-      // 4. Redirect to checkout page
       navigate("/checkout");
     } catch (error) {
       console.error("Single item checkout error", error);
