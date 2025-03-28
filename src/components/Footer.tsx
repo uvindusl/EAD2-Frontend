@@ -8,34 +8,37 @@ function Footer() {
   return (
     <footer>
       <div className="main-container">
-        <div className="col">
+        <div className="col-1">
           <img className="garpic" src={Garfieldpic} alt="Garfield" />
         </div>
-        <div className="col">
+        <div className="col-2">
           <div className="row1">
-            <h4>Contact Us</h4>
+            <h4>Contact Us</h4><br></br>
           </div>
           <div className="row2">
-            <a className="custom-a" href="mailto:garfields@gmail.com">
-              garfields@gmail.com
-            </a>
-            <br></br>
-            <br></br>
-            <p>+94 76-5506968</p>
+            
+            
             <p>
-              Independence Arcade Commercial Complex, Independence Ave, Colombo
-              00700, Sri Lanka
+              Independence Arcade Commercial Complex, <br></br>
+              Independence Ave, <br></br>
+              Colombo00700, <br></br>
+              Sri Lanka.<br></br>
+              <a className="custom-a" href="mailto:garfields@gmail.com">
+              garfields@gmail.com
+            </a><br></br>
+              +94 76-5506968
             </p>
+            
           </div>
         </div>
-        <div className="col">
+        <div className="col-3">
           <div className="row1">
             <h4>Follow Us</h4>
           </div>
           <div className="row2">
             <img className="logo" src={instagram} alt="instagram" />
             <a className="custom-a" href="#">
-              Instagrame
+              Instagram
             </a>
             <br></br>
             <img className="logo" src={facebook} alt="facebook" />
@@ -50,7 +53,10 @@ function Footer() {
           </div>
         </div>
       </div>
-      <p>&copy; 2025 Garfield's Cheesy Haven</p>
+      <div className="bottom">
+        <p>&copy; 2025 Garfield's Cheesy Haven</p>
+      </div>
+      
     </footer>
   );
 }
