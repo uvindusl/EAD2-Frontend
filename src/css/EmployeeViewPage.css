@@ -4,9 +4,15 @@
   margin-top: 20px;
   justify-self: center;
   border-radius: 25px;
-  background: radial-gradient(transparent, rgb(255, 162, 0));
+  min-height: 400px;
 }
 
+.employeeCard-container__content {
+  height: fit-content;
+  padding: 10px;
+  border-radius: 25px;
+  background: radial-gradient(transparent, rgb(255, 162, 0));
+}
 .footer6 {
   margin-top: 20px;
   left: 0;
