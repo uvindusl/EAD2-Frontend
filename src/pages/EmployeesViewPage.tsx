@@ -66,7 +66,7 @@ function EmployeesViewPage() {
         ) : error ? (
           <p className="error-message">{error}</p>
         ) : (
-          <div>
+          <div className="employeePage-grid">
             {employees.map((employee) => (
               <EmployeeCard
                 key={employee.id}

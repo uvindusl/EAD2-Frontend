@@ -93,7 +93,7 @@ function FoodPurchasePanel({ food }: FoodPurchasePanelProps) {
                 +
               </button>
               <button
-                className="btn1"
+                className="btn2"
                 onClick={() => setCount((count) => (count > 0 ? count - 1 : 0))}
               >
                 -
